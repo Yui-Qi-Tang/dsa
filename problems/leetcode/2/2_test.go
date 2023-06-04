@@ -5,6 +5,7 @@ import "testing"
 func TestAddTwoNumbers(t *testing.T) {
 
 	testfuncs := []func(*ListNode, *ListNode) *ListNode{
+		addTwoNumbersv30,
 		addTwoNumbersv29,
 		addTwoNumbersv28,
 		addTwoNumbersv27,

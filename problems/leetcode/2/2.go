@@ -45,6 +45,35 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func addTwoNumbersv30(l1, l2 *ListNode) *ListNode {
+	result := &ListNode{}
+	p := result
+	carry := 0
+
+	for l1 != nil || l2 != nil {
+		sum := 0
+		if l1 != nil {
+			sum += l1.Val
+			l1 = l1.Next
+		}
+
+		if l2 != nil {
+			sum += l2.Val
+			l2 = l2.Next
+		}
+
+		p.Next = &ListNode{Val: (carry + sum) % 10}
+		p = p.Next
+		carry = (carry + sum) / 10
+	}
+
+	if carry > 0 {
+		p.Next = &ListNode{Val: carry}
+	}
+
+	return result.Next
+}
+
 func addTwoNumbersv29(l1, l2 *ListNode) *ListNode {
 	result := &ListNode{}
 	p := result
