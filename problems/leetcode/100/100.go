@@ -44,6 +44,18 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func isSameTreev20(p, q *TreeNode) bool {
+	if p == nil || q == nil {
+		return p == q
+	}
+
+	if p.Val != q.Val {
+		return false
+	}
+
+	return isSameTreev20(p.Left, q.Left) && isSameTreev20(p.Right, q.Right)
+}
+
 func isSameTreev19(p, q *TreeNode) bool {
 	if p == nil || q == nil {
 		return p == q

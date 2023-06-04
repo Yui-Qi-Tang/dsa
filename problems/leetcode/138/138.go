@@ -54,6 +54,26 @@ type Node struct {
 	Random *Node
 }
 
+func copyRandomListv30(head *Node) *Node {
+	m := map[*Node]*Node{}
+
+	p := head
+	for p != nil {
+		m[p] = &Node{Val: p.Val}
+		p = p.Next
+	}
+
+	p = head
+	for p != nil {
+		clone := m[p]
+		clone.Next = m[p.Next]
+		clone.Random = m[p.Random]
+		p = p.Next
+	}
+
+	return m[head]
+}
+
 func copyRandomListv29(head *Node) *Node {
 	m := map[*Node]*Node{}
 

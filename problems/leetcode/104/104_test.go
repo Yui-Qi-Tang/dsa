@@ -8,6 +8,7 @@ import (
 func TestBuildTree(t *testing.T) {
 
 	testfuncs := []func(*TreeNode) int{
+		maxDepthv23,
 		maxDepthv22,
 		maxDepthv21,
 		maxDepthv20,

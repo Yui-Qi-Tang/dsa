@@ -5,6 +5,7 @@ import "testing"
 func TestCopyRandomList(t *testing.T) {
 
 	testfuncs := []func(*Node) *Node{
+		copyRandomListv30,
 		copyRandomListv29,
 		copyRandomListv28,
 		copyRandomListv27,
