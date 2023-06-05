@@ -5,6 +5,7 @@ import "testing"
 func TestFindDuplicate(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		findDuplicatev30,
 		findDuplicatev29,
 		findDuplicatev28,
 		findDuplicatev27,

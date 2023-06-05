@@ -54,6 +54,20 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func hasCyclev30(head *ListNode) bool {
+	s, f := head, head
+
+	for f != nil && f.Next != nil {
+		s = s.Next
+		f = f.Next.Next
+		if s == f {
+			return true
+		}
+	}
+
+	return false
+}
+
 func hasCyclev29(head *ListNode) bool {
 	s, f := head, head
 	for f != nil && f.Next != nil {

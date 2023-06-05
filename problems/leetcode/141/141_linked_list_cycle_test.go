@@ -6,6 +6,7 @@ import (
 
 func TestHasCycle(t *testing.T) {
 	testfuncs := []func(head *ListNode) bool{
+		hasCyclev30,
 		hasCyclev29,
 		hasCyclev28,
 		hasCyclev27,

@@ -41,6 +41,27 @@ How can we prove that at least one duplicate number must exist in nums?
 Can you solve the problem in linear runtime complexity?
 */
 
+func findDuplicatev30(nums []int) int {
+	s, f := 0, 0
+	for {
+		s = nums[s]
+		f = nums[nums[f]]
+		if s == f {
+			break
+		}
+	}
+
+	s2 := 0
+
+	for {
+		s = nums[s]
+		s2 = nums[s2]
+		if s == s2 {
+			return s2
+		}
+	}
+}
+
 func findDuplicatev29(nums []int) int {
 	s, f := 0, 0
 
