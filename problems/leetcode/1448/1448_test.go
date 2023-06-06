@@ -4,6 +4,7 @@ import "testing"
 
 func TestGoodNodes(t *testing.T) {
 	tesrfuncs := []func(*TreeNode) int{
+		goodNodesv17,
 		goodNodesv16,
 		goodNodesv15,
 		goodNodesv14,

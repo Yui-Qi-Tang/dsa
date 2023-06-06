@@ -52,6 +52,68 @@ Acceptance Rate
 40.7%
 */
 
+func constructorv25(size int) *lruv25 {
+	lru := &lruv25{
+		maxSize: size,
+		cache:   make(map[int]*nodev25),
+		left:    new(nodev25),
+		right:   new(nodev25),
+	}
+
+	lru.left.next = lru.right
+	lru.right.prev = lru.left
+
+	return lru
+}
+
+type nodev25 struct {
+	key, value int
+	prev, next *nodev25
+}
+
+type lruv25 struct {
+	cache       map[int]*nodev25
+	maxSize     int
+	left, right *nodev25
+}
+
+func (lru *lruv25) remove(n *nodev25) {
+	n.next.prev = n.prev
+	n.prev.next = n.next
+}
+
+func (lru *lruv25) insert(n *nodev25) {
+	n.next = lru.right
+	n.prev = lru.right.prev
+
+	lru.right.prev.next = n
+	lru.right.prev = n
+}
+
+func (lru *lruv25) Get(key int) int {
+	if n := lru.cache[key]; n != nil {
+		lru.remove(n)
+		lru.insert(n)
+		return n.value
+	}
+	return -1
+}
+
+func (lru *lruv25) Put(key, value int) {
+	if n := lru.cache[key]; n != nil {
+		lru.remove(n)
+	}
+
+	nn := &nodev25{key: key, value: value}
+	lru.insert(nn)
+	lru.cache[key] = nn
+
+	if len(lru.cache) > lru.maxSize {
+		delete(lru.cache, lru.left.next.key)
+		lru.remove(lru.left.next)
+	}
+}
+
 func constructorv24(size int) *lruv24 {
 
 	lru := &lruv24{

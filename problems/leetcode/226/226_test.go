@@ -31,6 +31,7 @@ func TestBuildTree(t *testing.T) {
 func TestInvertTree(t *testing.T) {
 
 	testfuncs := []func(*TreeNode) *TreeNode{
+		invertTreev28,
 		invertTreev27,
 		invertTreev26,
 		invertTreev25,

@@ -43,6 +43,60 @@ Constraints:
 
 */
 
+type priorityQueuev9 []int
+
+func (p priorityQueuev9) Len() int { return len(p) }
+
+func (p priorityQueuev9) Less(i, j int) bool {
+	return p[i] > p[j]
+}
+
+func (p *priorityQueuev9) Push(x any) {
+	*p = append(*p, x.(int))
+}
+
+func (p priorityQueuev9) Swap(i, j int) {
+	p[i], p[j] = p[j], p[i]
+}
+
+func (p *priorityQueuev9) Pop() any {
+	snap := *p
+	n := snap[snap.Len()-1]
+	snap = snap[:snap.Len()-1]
+	*p = snap
+	return n
+}
+
+func lastStoneWeightv9(stones []int) int {
+	if len(stones) == 0 {
+		return 0
+	}
+
+	in := priorityQueuev9(stones)
+	heap.Init(&in)
+
+	abs := func(x int) int {
+		if x < 0 {
+			return -x
+		}
+		return x
+	}
+
+	for in.Len() > 1 {
+		first := heap.Pop(&in).(int)
+		second := heap.Pop(&in).(int)
+		if first != second {
+			heap.Push(&in, abs(first-second))
+		}
+	}
+
+	if in.Len() == 0 {
+		return 0
+	}
+
+	return in[0]
+}
+
 type priorityQueuev8 []int
 
 func (p priorityQueuev8) Len() int { return len(p) }
