@@ -5,6 +5,7 @@ import "testing"
 func TestIsSameTree(t *testing.T) {
 
 	testfunc := []func(*TreeNode, *TreeNode) bool{
+		isSameTreev23,
 		isSameTreev22,
 		isSameTreev21,
 		isSameTreev20,

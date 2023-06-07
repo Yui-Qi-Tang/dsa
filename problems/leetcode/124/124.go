@@ -54,6 +54,27 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func maxPathSumv13(root *TreeNode) int {
+	result := 0
+	var maxSum func(n *TreeNode) int
+
+	maxSum = func(n *TreeNode) int {
+		if n == nil {
+			return 0
+		}
+
+		lmax := max(0, maxSum(n.Left))
+		rmax := max(0, maxSum(n.Right))
+
+		result = max(result, n.Val+lmax+rmax)
+
+		return n.Val + max(lmax, rmax)
+	}
+
+	maxSum(root)
+	return result
+}
+
 func maxPathSumv12(root *TreeNode) int {
 	var maxsum func(n *TreeNode) int
 	result := 0

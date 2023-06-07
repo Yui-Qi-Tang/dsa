@@ -41,6 +41,17 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func invertTreev29(root *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+
+	root.Left, root.Right = root.Right, root.Left
+	invertTreev29(root.Left)
+	invertTreev29(root.Right)
+	return root
+}
+
 func invertTreev28(root *TreeNode) *TreeNode {
 	if root == nil {
 		return root

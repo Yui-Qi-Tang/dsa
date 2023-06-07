@@ -43,6 +43,37 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func levelOrderv19(root *TreeNode) [][]int {
+	result := [][]int{}
+	if root == nil {
+		return result
+	}
+
+	queue := []*TreeNode{root}
+
+	for len(queue) > 0 {
+		qLen := len(queue)
+		lvs := []int{}
+
+		for qLen > 0 {
+			qLen--
+			n := queue[0]
+			queue = queue[1:]
+			lvs = append(lvs, n.Val)
+			if n.Left != nil {
+				queue = append(queue, n.Left)
+			}
+			if n.Right != nil {
+				queue = append(queue, n.Right)
+			}
+		}
+
+		result = append(result, lvs)
+	}
+
+	return result
+}
+
 func levelOrderv18(root *TreeNode) [][]int {
 	result := [][]int{}
 	if root == nil {
