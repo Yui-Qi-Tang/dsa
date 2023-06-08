@@ -41,6 +41,26 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func diameterOfBinaryTreev26(root *TreeNode) int {
+	result := 0
+
+	var md func(n *TreeNode) int
+
+	md = func(n *TreeNode) int {
+		if n == nil {
+			return 0
+		}
+
+		ld := md(n.Left)
+		rd := md(n.Right)
+		result = max(result, ld+rd)
+		return 1 + max(ld, rd)
+	}
+	md(root)
+
+	return result
+}
+
 func diameterOfBinaryTreev25(root *TreeNode) int {
 	result := 0
 

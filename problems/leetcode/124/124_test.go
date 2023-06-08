@@ -4,6 +4,7 @@ import "testing"
 
 func TestMaxPathSum(t *testing.T) {
 	testfuncs := []func(*TreeNode) int{
+		maxPathSumv14,
 		maxPathSumv13,
 		maxPathSumv12,
 		maxPathSumv11,

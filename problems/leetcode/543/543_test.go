@@ -14,6 +14,7 @@ func TestBuildTree(t *testing.T) {
 
 func TestDiameterOfBinaryTree(t *testing.T) {
 	testfuncs := []func(*TreeNode) int{
+		diameterOfBinaryTreev26,
 		diameterOfBinaryTreev25,
 		diameterOfBinaryTreev24,
 		diameterOfBinaryTreev23,

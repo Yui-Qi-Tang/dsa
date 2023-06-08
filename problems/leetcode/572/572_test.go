@@ -5,12 +5,13 @@ import "testing"
 func TestIsSubtree(t *testing.T) {
 
 	testfuncs := []func(p, q *TreeNode) bool{
+		isSubtreev25,
 		isSubtreev24,
 		isSubtreev23,
 		isSubtreev22,
 		isSubtreev21,
 		isSubtreev20,
-		isSubTreev19,
+		isSubtreev19,
 		isSubtreev18,
 		isSubtreev17,
 		isSubtreev16,
