@@ -5,6 +5,7 @@ import "testing"
 func TestIsValidBST(t *testing.T) {
 
 	testfuncs := []func(*TreeNode) bool{
+		isValidBSTv21,
 		isValidBSTv20,
 		isValidBSTv19,
 		isValidBSTv18,

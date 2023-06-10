@@ -48,6 +48,28 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func buildTreev17(preorder, inorder []int) *TreeNode {
+	if len(preorder) == 0 || len(inorder) == 0 {
+		return nil
+	}
+
+	root := &TreeNode{Val: preorder[0]}
+	findMid := func(in []int, target int) int {
+		for i, v := range in {
+			if v == target {
+				return i
+			}
+		}
+		return -1
+	}
+	mid := findMid(inorder, root.Val)
+
+	root.Left = buildTreev17(preorder[1:mid+1], inorder[:mid+1])
+	root.Right = buildTreev17(preorder[mid+1:], inorder[mid+1:])
+
+	return root
+}
+
 func buildTreev16(preorder, inorder []int) *TreeNode {
 	if len(preorder) == 0 || len(inorder) == 0 {
 		return nil

@@ -65,6 +65,7 @@ func TestMyLRUCacheCase1(t *testing.T) {
 
 	size := 2
 	testCachers := []cacher{
+		constructorv28(size),
 		constructorv27(size),
 		constructorv26(size),
 		constructorv25(size),

@@ -49,6 +49,19 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func lowestCommonAncestorv22(root, p, q *TreeNode) *TreeNode {
+
+	if p.Val > root.Val && q.Val > root.Val {
+		return lowestCommonAncestorv22(root.Right, p, q)
+	}
+
+	if q.Val < root.Val && p.Val < root.Val {
+		return lowestCommonAncestorv22(root.Left, p, q)
+	}
+
+	return root
+}
+
 func lowestCommonAncestorv21(root, p, q *TreeNode) *TreeNode {
 
 	if p.Val > root.Val && q.Val > root.Val {
