@@ -43,6 +43,35 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func isBalancedv27(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+
+	var md func(n *TreeNode) int
+	md = func(n *TreeNode) int {
+		if n == nil {
+			return 0
+		}
+
+		return 1 + max(md(n.Left), md(n.Right))
+	}
+
+	abs := func(x int) int {
+		if x < 0 {
+			return -x
+		}
+
+		return x
+	}
+
+	if abs(md(root.Left)-md(root.Right)) > 1 {
+		return false
+	}
+
+	return isBalancedv27(root.Left) && isBalancedv27(root.Right)
+}
+
 func isBalancedv26(root *TreeNode) bool {
 	if root == nil {
 		return true
