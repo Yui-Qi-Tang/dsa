@@ -44,6 +44,14 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func maxDepthv30(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	return 1 + max(maxDepthv30(root.Left), maxDepthv30(root.Right))
+}
+
 func maxDepthv29(root *TreeNode) int {
 	if root == nil {
 		return 0

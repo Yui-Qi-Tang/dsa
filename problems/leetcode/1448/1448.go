@@ -58,6 +58,27 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func goodNodesv22(root *TreeNode) int {
+	var gn func(n *TreeNode, preMax int) int
+
+	gn = func(n *TreeNode, preMax int) int {
+		if n == nil {
+			return 0
+		}
+
+		result := 0
+
+		if n.Val >= preMax {
+			preMax = n.Val
+			result++
+		}
+
+		return result + gn(n.Left, preMax) + gn(n.Right, preMax)
+	}
+
+	return gn(root, root.Val)
+}
+
 func goodNodesv21(root *TreeNode) int {
 	var gn func(n *TreeNode, preMax int) int
 
