@@ -10,6 +10,7 @@ func TestBuildTree(t *testing.T) {
 func TestIsBalanced(t *testing.T) {
 
 	testfuncs := []func(*TreeNode) bool{
+		isBalancedv29,
 		isBalancedv28,
 		isBalancedv27,
 		isBalancedv26,

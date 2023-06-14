@@ -5,6 +5,7 @@ import "testing"
 func TestBuildTree(t *testing.T) {
 
 	testfuncs := []func([]int, []int) *TreeNode{
+		buildTreev20,
 		buildTreev19,
 		buildTreev18,
 		buildTreev17,

@@ -5,6 +5,7 @@ import "testing"
 func TestLengthOfLongestSubstring(t *testing.T) {
 
 	testfuncs := []func(string) int{
+		lengthOfLongestSubstringv14,
 		lengthOfLongestSubstringv13,
 		lengthOfLongestSubstringv12,
 		lengthOfLongestSubstringv11,
