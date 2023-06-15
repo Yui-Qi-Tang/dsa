@@ -41,6 +41,23 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func isSubtreev30(root, sub *TreeNode) bool {
+	var same func(p, q *TreeNode) bool
+	same = func(p, q *TreeNode) bool {
+		if p == nil || q == nil {
+			return p == q
+		}
+
+		if p.Val != q.Val {
+			return false
+		}
+
+		return same(p.Left, q.Left) && same(p.Right, q.Right)
+	}
+
+	return same(root, sub) || isSubtreev30(root.Left, sub) || isSubtreev30(root.Right, sub)
+}
+
 func isSubtreev29(root, sub *TreeNode) bool {
 	var same func(p, q *TreeNode) bool
 	same = func(p, q *TreeNode) bool {

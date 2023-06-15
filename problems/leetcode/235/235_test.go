@@ -30,6 +30,7 @@ func TestBuildTreeAndFind(t *testing.T) {
 func TestLowestCommonAncestor(t *testing.T) {
 
 	testfuncs := []func(root, p, q *TreeNode) *TreeNode{
+		lowestCommonAncestorv26,
 		lowestCommonAncestorv25,
 		lowestCommonAncestorv24,
 		lowestCommonAncestorv23,
