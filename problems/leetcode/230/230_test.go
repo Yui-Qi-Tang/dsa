@@ -5,6 +5,7 @@ import "testing"
 func TestKthSmallest(t *testing.T) {
 
 	testfuncs := []func(*TreeNode, int) int{
+		kthSmallestv23,
 		kthSmallestv22,
 		kthSmallestv21,
 		kthSmallestv20,

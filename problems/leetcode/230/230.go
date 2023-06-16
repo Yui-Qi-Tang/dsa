@@ -51,6 +51,28 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func kthSmallestv23(root *TreeNode, k int) int {
+	stack := []*TreeNode{}
+
+	for len(stack) > 0 || root != nil {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+
+		k--
+		n := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		if k == 0 {
+			return n.Val
+		}
+
+		root = n.Right
+	}
+
+	return -1
+}
+
 func kthSmallestv22(root *TreeNode, k int) int {
 	stack := []*TreeNode{}
 
