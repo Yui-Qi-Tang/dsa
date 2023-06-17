@@ -26,6 +26,21 @@ Constraints:
 0 <= prices[i] <= 104
 */
 
+func maxProfitV18(prices []int) int {
+	buy := prices[0]
+	mp := 0 // max profix
+
+	for i := 1; i < len(prices); i++ {
+		if buy < prices[i] {
+			mp = max(mp, prices[i]-buy)
+		} else {
+			buy = prices[i]
+		}
+	}
+
+	return mp
+}
+
 func maxProfitV17(prices []int) int {
 	result := 0
 	buy := prices[0]
