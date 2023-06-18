@@ -52,6 +52,67 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func constructorv20() codecv20 {
+	return codecv20{null: "n", split: ","}
+}
+
+type codecv20 struct {
+	null, split string
+}
+
+func (c codecv20) serialize(root *TreeNode) string {
+	if root == nil {
+		return ""
+	}
+
+	result := []string{}
+	queue := []*TreeNode{root}
+	for len(queue) > 0 {
+		n := queue[0]
+		queue = queue[1:]
+		if n == nil {
+			result = append(result, c.null)
+		} else {
+			result = append(result, strconv.Itoa(n.Val))
+			queue = append(queue, n.Left, n.Right)
+		}
+
+	}
+
+	return strings.Join(result, c.split)
+}
+
+func (c codecv20) deserialize(data string) *TreeNode {
+	if len(data) == 0 {
+		return nil
+	}
+
+	toInt := func(s string) int {
+		num, _ := strconv.Atoi(s)
+		return num
+	}
+	in := strings.Split(data, c.split)
+	root := &TreeNode{Val: toInt(in[0])}
+	queue := []*TreeNode{root}
+	for i := 1; i < len(in); {
+		n := queue[0]
+		queue = queue[1:]
+		if in[i] != c.null {
+			n.Left = &TreeNode{Val: toInt(in[i])}
+			queue = append(queue, n.Left)
+		}
+		i++
+
+		if i < len(in) && in[i] != c.null {
+			n.Right = &TreeNode{Val: toInt(in[i])}
+			queue = append(queue, n.Right)
+		}
+		i++
+	}
+
+	return root
+}
+
 func constructorv19() codecv19 {
 	return codecv19{null: "n", split: ","}
 }

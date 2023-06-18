@@ -52,6 +52,28 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func isValidBSTv28(root *TreeNode) bool {
+	var valid func(n, min, max *TreeNode) bool
+
+	valid = func(n, min, max *TreeNode) bool {
+		if n == nil {
+			return true
+		}
+
+		if min != nil && min.Val >= n.Val {
+			return false
+		}
+
+		if max != nil && max.Val <= n.Val {
+			return false
+		}
+
+		return valid(n.Left, min, n) && valid(n.Right, n, max)
+	}
+
+	return valid(root, nil, nil)
+}
+
 func isValidBSTv27(root *TreeNode) bool {
 	var valid func(n, min, max *TreeNode) bool
 
