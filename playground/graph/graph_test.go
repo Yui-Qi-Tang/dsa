@@ -73,7 +73,7 @@ func TestBFS(t *testing.T) {
 		}
 	}
 	if result != "ABDECF" {
-		t.Fatalf("it should be 'AEFCDB', but got '%s'", result)
+		t.Fatalf("it should be 'ABDECF', but got '%s'", result)
 	}
 	t.Log("passed")
 }
