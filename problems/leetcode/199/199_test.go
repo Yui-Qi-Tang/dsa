@@ -7,6 +7,7 @@ import (
 
 func TestBuildTree(t *testing.T) {
 	testfuncs := []func(*TreeNode) []int{
+		rightSideViewv29,
 		rightSideViewv28,
 		rightSideViewv27,
 		rightSideViewv26,

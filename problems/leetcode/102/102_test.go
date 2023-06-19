@@ -8,6 +8,7 @@ import (
 func TestLevelOrder(t *testing.T) {
 
 	testfunc := []func(*TreeNode) [][]int{
+		levelOrderv29,
 		levelOrderv28,
 		levelOrderv27,
 		levelOrderv26,
