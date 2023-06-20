@@ -47,6 +47,31 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func rightSideViewv30(root *TreeNode) []int {
+	result := []int{}
+	if root == nil {
+		return result
+	}
+
+	queue := []*TreeNode{root}
+	for len(queue) > 0 {
+		result = append(result, queue[len(queue)-1].Val)
+		qLen := len(queue)
+		for ; qLen > 0; qLen-- {
+			n := queue[0]
+			queue = queue[1:]
+			if n.Left != nil {
+				queue = append(queue, n.Left)
+			}
+			if n.Right != nil {
+				queue = append(queue, n.Right)
+			}
+		}
+	}
+
+	return result
+}
+
 func rightSideViewv29(root *TreeNode) []int {
 	result := []int{}
 	if root == nil {
