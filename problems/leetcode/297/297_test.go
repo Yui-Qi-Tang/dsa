@@ -27,6 +27,7 @@ func TestCodes(t *testing.T) {
 
 	leetcodeVerCodec := Constructor()
 	testfuncs := []codecer{
+		constructorv23(),
 		constructorv22(),
 		constructorv21(),
 		constructorv20(),

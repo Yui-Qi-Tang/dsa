@@ -32,6 +32,24 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 */
 
+func lengthOfLongestSubstringv21(s string) int {
+	dup := make(map[byte]bool, 0)
+	result := 0
+
+	l := 0
+	for r := range s {
+		for dup[s[r]] {
+			delete(dup, s[l])
+			l++
+		}
+
+		dup[s[r]] = true
+		result = max(result, r-l+1)
+	}
+
+	return result
+}
+
 func lengthOfLongestSubstringv20(s string) int {
 	dup := map[byte]bool{}
 	result := 0
