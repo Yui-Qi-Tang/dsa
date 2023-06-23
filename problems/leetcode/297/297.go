@@ -1,6 +1,7 @@
 package b75
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -50,6 +51,68 @@ type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
+}
+
+func constructorv24() codecv24 {
+	return codecv24{null: "n", join: ","}
+}
+
+type codecv24 struct {
+	null, join string
+}
+
+func (c codecv24) serialize(root *TreeNode) string {
+	if root == nil {
+		return ""
+	}
+
+	result := []string{}
+	queue := []*TreeNode{root}
+	for len(queue) > 0 {
+		n := queue[0]
+		queue = queue[1:]
+		if n == nil {
+			result = append(result, c.null)
+		} else {
+			result = append(result, strconv.Itoa(n.Val))
+			queue = append(queue, n.Left, n.Right)
+		}
+	}
+
+	return strings.Join(result, c.join)
+}
+
+func (c codecv24) deserialize(data string) *TreeNode {
+	if len(data) == 0 {
+		return nil
+	}
+
+	in := strings.Split(data, c.join)
+	toInt := func(x string) int {
+		n, _ := strconv.Atoi(x)
+		return n
+	}
+
+	root := &TreeNode{Val: toInt(in[0])}
+	queue := []*TreeNode{root}
+	for i := 1; i < len(in); {
+		n := queue[0]
+		fmt.Println(n.Val)
+		queue = queue[1:]
+		if in[i] != c.null {
+			n.Left = &TreeNode{Val: toInt(in[i])}
+			queue = append(queue, n.Left)
+		}
+		i++
+
+		if i < len(in) && in[i] != c.null {
+			n.Right = &TreeNode{Val: toInt(in[i])}
+			queue = append(queue, n.Right)
+		}
+		i++
+	}
+
+	return root
 }
 
 func constructorv23() codecv23 {
