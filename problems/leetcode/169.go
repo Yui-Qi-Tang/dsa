@@ -44,6 +44,23 @@ Acceptance Rate
 
 */
 
+func majorityElementv24(nums []int) int {
+	c, cnt := 0, 0
+
+	for _, num := range nums {
+		if cnt == 0 {
+			c = num
+		}
+		if c == num {
+			cnt++
+		} else {
+			cnt--
+		}
+	}
+
+	return c
+}
+
 func majorityElementv23(nums []int) int {
 	c, cnt := 0, 0
 
