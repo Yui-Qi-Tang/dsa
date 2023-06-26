@@ -43,6 +43,48 @@ Constraints:
 
 */
 
+type pq26 []int
+
+func (p pq26) Len() int           { return len(p) }
+func (p pq26) Less(i, j int) bool { return p[i] > p[j] }
+func (p *pq26) Push(x any)        { *p = append(*p, x.(int)) }
+func (p pq26) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+func (p *pq26) Pop() any {
+	s := *p
+	n := s[s.Len()-1]
+	*p = s[:s.Len()-1]
+	return n
+}
+
+func lastStoneWeightv26(stones []int) int {
+	if len(stones) == 0 {
+		return 0
+	}
+
+	in := pq26(stones)
+	heap.Init(&in)
+	abs := func(x int) int {
+		if x < 0 {
+			return -x
+		}
+		return x
+	}
+
+	for in.Len() > 1 {
+		p1 := heap.Pop(&in).(int)
+		p2 := heap.Pop(&in).(int)
+		if p1 != p2 {
+			heap.Push(&in, abs(p1-p2))
+		}
+	}
+
+	if in.Len() == 0 {
+		return 0
+	}
+
+	return in[0]
+}
+
 type pq25 []int
 
 func (p pq25) Len() int           { return len(p) }
