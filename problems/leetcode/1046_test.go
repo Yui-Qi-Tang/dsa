@@ -13,6 +13,7 @@ i, i*2+1. i
 func TestLastStoneWeight(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		lastStoneWeightv29,
 		lastStoneWeightv28,
 		lastStoneWeightv27,
 		lastStoneWeightv26,
