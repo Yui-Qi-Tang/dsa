@@ -5,6 +5,7 @@ import "testing"
 func TestMajorityElement(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		majorityElementv30,
 		majorityElementv29,
 		majorityElementv28,
 		majorityElementv27,
