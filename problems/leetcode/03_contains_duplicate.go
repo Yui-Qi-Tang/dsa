@@ -20,6 +20,20 @@ Output: true
 
 */
 
+func ContainDuplicatev2(nums []int) bool {
+
+	exist := make(map[int]bool, len(nums))
+
+	for _, num := range nums {
+		if exist[num] {
+			return true
+		}
+		exist[num] = true
+	}
+
+	return false
+}
+
 func ContainDuplicatev1(nums []int) bool {
 	freq := make([]int, len(nums))
 
