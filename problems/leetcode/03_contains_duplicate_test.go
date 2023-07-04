@@ -14,6 +14,7 @@ func TestContainDuplicate(t *testing.T) {
 	}
 
 	testfuncs := []func([]int) bool{
+		ContainDuplicatev3,
 		ContainDuplicatev2,
 		ContainDuplicatev1,
 		ContainDuplicate,
