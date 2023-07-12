@@ -20,6 +20,18 @@ Output: true
 
 */
 
+func ContainDuplicatev10(nums []int) bool {
+	dup := make(map[int]bool, len(nums))
+	for _, num := range nums {
+		if dup[num] {
+			return true
+		}
+
+		dup[num] = true
+	}
+	return false
+}
+
 func ContainDuplicatev9(nums []int) bool {
 	exist := make(map[int]bool, len(nums))
 
