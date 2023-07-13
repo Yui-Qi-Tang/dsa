@@ -33,6 +33,20 @@ Constraints:
 Only one valid answer exists.
 */
 
+func TwoSumv22(nums []int, target int) []int {
+	diff := make(map[int]int, len(nums))
+
+	for i, num := range nums {
+		if v, exist := diff[num]; exist {
+			return []int{v, i}
+		}
+
+		diff[target-num] = i
+	}
+
+	return []int{}
+}
+
 func TwoSumv21(nums []int, target int) []int {
 
 	diff := make(map[int]int, len(nums))
