@@ -59,6 +59,7 @@ func TestMaximumProductSubarray(t *testing.T) {
 	}
 
 	testfuncs := []func([]int) int{
+		MaximumProductSubarrayv19,
 		MaximumProductSubarrayv18,
 		MaximumProductSubarrayv17,
 		MaximumProductSubarrayv16,
