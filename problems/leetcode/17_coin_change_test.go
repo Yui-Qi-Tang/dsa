@@ -6,6 +6,7 @@ func TestCoinChange(t *testing.T) {
 
 	// test functions
 	testFuncs := []func(coins []int, amount int) int{
+		coinChangev25,
 		coinChangev24,
 		coinChangev23,
 		coinChangev22,
