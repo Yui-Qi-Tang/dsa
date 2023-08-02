@@ -28,6 +28,26 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
 
 */
 
+func MaximumProductSubarrayv30(nums []int) int {
+	n := len(nums)
+	if n == 0 {
+		return 0
+	}
+
+	maxs, mins := make([]int, n), make([]int, n)
+	maxs[0], mins[0] = nums[0], nums[0]
+
+	for i := 1; i < n; i++ {
+		maxs[i] = max(maxs[i-1], nums[i]*nums[i-1])
+		mins[i] = min(mins[i-1], nums[i]*nums[i-1])
+		if maxs[i] != 0 {
+			maxs[i] = max(maxs[i], nums[i]*mins[i-1])
+		}
+	}
+
+	return maxs[n-1]
+}
+
 func MaximumProductSubarrayv29(nums []int) int {
 	n := len(nums)
 	if n == 0 {
