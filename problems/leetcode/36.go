@@ -51,6 +51,37 @@ board[i].length == 9
 board[i][j] is a digit 1-9 or '.'.
 */
 
+func isValidSudokuv13(board [][]byte) bool {
+	rows := make([]map[byte]bool, len(board))
+	cols := make([]map[byte]bool, len(board))
+	squares := make([]map[byte]bool, len(board))
+
+	for i := 0; i < len(board); i++ {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := 0; i < len(board); i++ {
+		for j := 0; j < len(board); j++ {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
 func isValidSudokuv12(board [][]byte) bool {
 	rows := make([]map[byte]bool, 9)
 	cols := make([]map[byte]bool, 9)
