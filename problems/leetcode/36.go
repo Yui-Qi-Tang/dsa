@@ -51,6 +51,296 @@ board[i].length == 9
 board[i][j] is a digit 1-9 or '.'.
 */
 
+func isValidSudokuv28(board [][]byte) bool {
+	n := len(board)
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	square := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		square[i] = make(map[byte]bool)
+	}
+
+	for i := range rows {
+		for j := range cols {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || square[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			square[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv27(board [][]byte) bool {
+	n := len(board)
+
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := range rows {
+		for j := range cols {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv26(board [][]byte) bool {
+	n := len(board)
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := range rows {
+		for j := range cols {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv25(board [][]byte) bool {
+	n := len(board)
+
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = map[byte]bool{}
+	}
+
+	for i := range rows {
+		for j := range cols {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv24(board [][]byte) bool {
+	n := len(board)
+
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := range rows {
+		for j := range cols {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv23(board [][]byte) bool {
+	n := len(board)
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := range rows {
+		for j := range rows {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv22(board [][]byte) bool {
+	n := len(board)
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := range rows {
+		for j := range rows {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv21(board [][]byte) bool {
+	n := len(board)
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := range rows {
+		for j := range rows {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
+func isValidSudokuv20(board [][]byte) bool {
+	n := len(board)
+	rows := make([]map[byte]bool, n)
+	cols := make([]map[byte]bool, n)
+	squares := make([]map[byte]bool, n)
+
+	for i := range rows {
+		rows[i] = make(map[byte]bool)
+		cols[i] = make(map[byte]bool)
+		squares[i] = make(map[byte]bool)
+	}
+
+	for i := 0; i < n; i++ {
+		for j := 0; j < n; j++ {
+			if board[i][j] == '.' {
+				continue
+			}
+
+			sn := 3*(i/3) + (j / 3)
+			if rows[i][board[i][j]] || cols[j][board[i][j]] || squares[sn][board[i][j]] {
+				return false
+			}
+
+			rows[i][board[i][j]] = true
+			cols[j][board[i][j]] = true
+			squares[sn][board[i][j]] = true
+		}
+	}
+
+	return true
+}
+
 func isValidSudokuv19(board [][]byte) bool {
 	n := len(board)
 	if n != 9 {

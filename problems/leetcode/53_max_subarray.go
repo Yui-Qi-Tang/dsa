@@ -25,6 +25,100 @@ Output: 23
 use Kadane's algorithm. Kadane's algorithm is a dynamic programming approach to find the maximum subarray sum in an array
 */
 
+func MaximumSubarrayv48(nums []int) int {
+	g, l := nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		l = max(nums[i], l+nums[i])
+		g = max(g, l)
+	}
+	return g
+}
+
+func MaximumSubarrayv47(nums []int) int {
+	g, l := nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		l = max(nums[i]+l, nums[i])
+		g = max(g, l)
+	}
+
+	return g
+}
+
+func MaximumSubarrayv46(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(l+nums[i], nums[i])
+		g = max(g, l)
+	}
+
+	return g
+}
+
+func MaximumSubarrayv45(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(l+nums[i], nums[i])
+		g = max(g, l)
+	}
+	return g
+}
+
+func MaximumSubarrayv44(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(l+nums[i], nums[i])
+		g = max(g, l)
+	}
+
+	return g
+}
+
+func MaximumSubarrayv43(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(nums[i], nums[i]+l)
+		g = max(g, l)
+	}
+	return g
+}
+
+func MaximumSubarrayv42(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(nums[i], l+nums[i])
+		g = max(g, l)
+	}
+
+	return g
+}
+
+func MaximumSubarrayv41(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(nums[i], l+nums[i])
+		g = max(l, g)
+	}
+
+	return g
+}
+
+func MaximumSubarrayv40(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(nums[i], l+nums[i])
+		g = max(g, l)
+	}
+
+	return g
+}
+
 func MaximumSubarrayv39(nums []int) int {
 	g, l := nums[0], nums[0]
 

@@ -29,6 +29,206 @@ Constraints:
 -109 <= nums[i] <= 109
 */
 
+func longestConsecutivev39(nums []int) int {
+	m := make(map[int]bool, len(nums))
+	for _, n := range nums {
+		m[n] = true
+	}
+
+	longest := 0
+	for _, n := range nums {
+		if !m[n-1] {
+			length := 0
+
+			for m[n+length] {
+				length++
+			}
+
+			longest = max(longest, length)
+		}
+	}
+	return longest
+}
+
+func longestConsecutivev38(nums []int) int {
+	m := make(map[int]bool)
+	for _, n := range nums {
+		m[n] = true
+	}
+
+	longest := 0
+
+	for _, n := range nums {
+		if !m[n-1] {
+			length := 0
+			for m[n+length] {
+				length++
+			}
+			longest = max(longest, length)
+		}
+	}
+
+	return longest
+}
+
+func longestConsecutivev37(nums []int) int {
+	m := make(map[int]bool)
+	for _, num := range nums {
+		m[num] = true
+	}
+
+	longest := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+
+			for m[num+length] {
+				length++
+			}
+
+			longest = max(longest, length)
+		}
+	}
+
+	return longest
+}
+
+func longestConsecutivev36(nums []int) int {
+	m := make(map[int]bool)
+	for _, num := range nums {
+		m[num] = true
+	}
+
+	longest := 0
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+
+			for m[num+length] {
+				length++
+			}
+
+			longest = max(length, longest)
+		}
+	}
+
+	return longest
+}
+
+func longestConsecutivev35(nums []int) int {
+	m := make(map[int]bool)
+
+	for _, num := range nums {
+		m[num] = true
+	}
+	longest := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+			for m[num+length] {
+				length++
+			}
+			longest = max(longest, length)
+		}
+	}
+
+	return longest
+}
+
+func longestConsecutivev34(nums []int) int {
+	m := make(map[int]bool)
+
+	for _, num := range nums {
+		m[num] = true
+	}
+
+	longest := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+			for m[num+length] {
+				length++
+			}
+			longest = max(longest, length)
+		}
+	}
+
+	return longest
+}
+
+func longestConsecutivev33(nums []int) int {
+	m := make(map[int]bool)
+
+	for _, num := range nums {
+		m[num] = true
+	}
+
+	longest := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+			for m[num+length] {
+				length++
+			}
+
+			longest = max(longest, length)
+		}
+	}
+
+	return longest
+}
+
+func longestConsecutivev32(nums []int) int {
+	m := make(map[int]bool)
+
+	for _, num := range nums {
+		m[num] = true
+	}
+
+	longest := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+
+			for m[num+length] {
+				length++
+			}
+
+			longest = max(longest, length)
+		}
+	}
+
+	return longest
+}
+
+func longestConsecutivev31(nums []int) int {
+	m := make(map[int]bool, len(nums))
+
+	for _, num := range nums {
+		m[num] = true
+	}
+
+	longest := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+			for m[num+length] {
+				length++
+			}
+
+			longest = max(length, longest)
+		}
+	}
+
+	return longest
+}
+
 func longestConsecutivev30(nums []int) int {
 	m := make(map[int]bool, len(nums))
 	for _, num := range nums {
