@@ -5,6 +5,7 @@ import "testing"
 func TestLongestConsecutive(t *testing.T) {
 
 	testFuncs := []func(nums []int) int{
+		longestConsecutivev28,
 		longestConsecutivev27,
 		longestConsecutivev26,
 		longestConsecutivev25,

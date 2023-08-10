@@ -29,6 +29,26 @@ Constraints:
 -109 <= nums[i] <= 109
 */
 
+func longestConsecutivev28(nums []int) int {
+	m := make(map[int]bool, len(nums))
+	for _, num := range nums {
+		m[num] = true
+	}
+	longest := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			length := 0
+			for m[num+length] {
+				length++
+			}
+			longest = max(longest, length)
+		}
+	}
+
+	return longest
+}
+
 func longestConsecutivev27(nums []int) int {
 	m := make(map[int]bool)
 
@@ -311,7 +331,6 @@ func longestConsecutivev16(nums []int) int {
 	}
 
 	return longest
-
 }
 
 func longestConsecutivev15(nums []int) int {
@@ -339,7 +358,6 @@ func longestConsecutivev15(nums []int) int {
 	}
 
 	return longest
-
 }
 
 func longestConsecutivev14(nums []int) int {
@@ -391,7 +409,6 @@ func longestConsecutivev13(nums []int) int {
 	}
 
 	return longest
-
 }
 
 func longestConsecutivev12(nums []int) int {
@@ -419,7 +436,6 @@ func longestConsecutivev12(nums []int) int {
 	}
 
 	return longest
-
 }
 
 func longestConsecutivev11(nums []int) int {
@@ -573,7 +589,6 @@ func longestConsecutivev5(nums []int) int {
 	}
 
 	return longest
-
 }
 
 func longestConsecutivev4(nums []int) int {
@@ -625,7 +640,6 @@ func longestConsecutivev3(nums []int) int {
 	}
 	fmt.Println(m)
 	return longest
-
 }
 
 func longestConsecutivev2(nums []int) int {
