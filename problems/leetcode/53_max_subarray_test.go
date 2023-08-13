@@ -5,6 +5,7 @@ import "testing"
 func TestMaximumSubarray(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		MaximumSubarrayv40,
 		MaximumSubarrayv39,
 		MaximumSubarrayv38,
 		MaximumSubarrayv37,

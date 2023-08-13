@@ -25,6 +25,17 @@ Output: 23
 use Kadane's algorithm. Kadane's algorithm is a dynamic programming approach to find the maximum subarray sum in an array
 */
 
+func MaximumSubarrayv40(nums []int) int {
+	g, l := nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		l = max(nums[i], l+nums[i])
+		g = max(g, l)
+	}
+
+	return g
+}
+
 func MaximumSubarrayv39(nums []int) int {
 	g, l := nums[0], nums[0]
 
