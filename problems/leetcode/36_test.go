@@ -5,6 +5,7 @@ import "testing"
 func TestIsValidSudoku(t *testing.T) {
 
 	testfuncs := []func([][]byte) bool{
+		isValidSudokuv29,
 		isValidSudokuv28,
 		isValidSudokuv27,
 		isValidSudokuv26,
