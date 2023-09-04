@@ -163,7 +163,7 @@ func TestFindNElementsWithMyHeap(t *testing.T) {
 	t.Log("passed")
 }
 
-func BenchmarkFindNWithSortInt(b *testing.B) {
+func BenchmarkFindTopNFrom1MIntSliceWithSort(b *testing.B) {
 	n := 5
 
 	for i := 0; i < b.N; i++ {
@@ -172,7 +172,7 @@ func BenchmarkFindNWithSortInt(b *testing.B) {
 	}
 }
 
-func BenchmarkFindNWithMyHeapInt(b *testing.B) {
+func BenchmarkFindTopNFrom1MIntSliceWithMyHeap(b *testing.B) {
 	n := 5
 
 	for i := 0; i < b.N; i++ {
@@ -182,7 +182,7 @@ func BenchmarkFindNWithMyHeapInt(b *testing.B) {
 	}
 }
 
-func BenchmarkFindNWithHeapInt(b *testing.B) {
+func BenchmarkFindTopNFrom1MIntSliceWithBuiltinHeap(b *testing.B) {
 	n := 5
 	for i := 0; i < b.N; i++ {
 		in := generateSlice(1000000)
@@ -191,7 +191,7 @@ func BenchmarkFindNWithHeapInt(b *testing.B) {
 	}
 }
 
-func BenchmarkFindNWithHeapElementsStruct(b *testing.B) {
+func BenchmarkFindTopNFrom1MStructSliceWithMyHeap(b *testing.B) {
 	n := 5
 	build := func(in []int) []element {
 		result := make([]element, 0, len(in))
@@ -210,7 +210,7 @@ func BenchmarkFindNWithHeapElementsStruct(b *testing.B) {
 	}
 }
 
-func BenchmarkFindNWithSortElementsStruct(b *testing.B) {
+func BenchmarkFindTopNFrom1MStructSliceWithSort(b *testing.B) {
 	n := 5
 	build := func(in []int) []element {
 		result := make([]element, 0, len(in))
