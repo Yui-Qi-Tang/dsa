@@ -35,6 +35,38 @@ Submissions
 
 */
 
+func ContainerWithMostWaterv17(height []int) int {
+	l, r, result := 0, len(height)-1, 0
+
+	for l < r {
+		result = max(result, min(height[l], height[r])*(r-l))
+
+		if height[l] > height[r] {
+			r--
+		} else {
+			l++
+		}
+	}
+
+	return result
+}
+
+func ContainerWithMostWaterv16(height []int) int {
+	l, r, result := 0, len(height)-1, 0
+
+	for l < r {
+		result = max(result, min(height[l], height[r])*(r-l))
+
+		if height[l] > height[r] {
+			r--
+		} else {
+			l++
+		}
+	}
+
+	return result
+}
+
 func ContainerWithMostWaterv15(height []int) int {
 	l, r, result := 0, len(height)-1, 0
 
