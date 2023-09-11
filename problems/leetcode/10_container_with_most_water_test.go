@@ -5,6 +5,7 @@ import "testing"
 func TestContainerWithMostWater(t *testing.T) {
 
 	testFuncs := []func([]int) int{
+		ContainerWithMostWaterv18,
 		ContainerWithMostWaterv17,
 		ContainerWithMostWaterv16,
 		ContainerWithMostWaterv15,
