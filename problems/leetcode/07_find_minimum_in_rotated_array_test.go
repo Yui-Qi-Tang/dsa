@@ -7,6 +7,7 @@ import (
 func TestFindMinRotatedSortedArray(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		findMinRotatedSortedArrayv8,
 		findMinRotatedSortedArrayv7,
 		findMinRotatedSortedArrayv6,
 		findMinRotatedSortedArrayv5,
