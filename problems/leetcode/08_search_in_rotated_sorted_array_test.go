@@ -5,8 +5,9 @@ import "testing"
 func TestSearchInRotatedArray(t *testing.T) {
 
 	testfuncs := []func([]int, int) int{
-		SearchInRotatedArrayv1,
+		SearchInRotatedArrayv3,
 		SearchInRotatedArrayv2,
+		SearchInRotatedArrayv1,
 	}
 
 	testcases := []struct {

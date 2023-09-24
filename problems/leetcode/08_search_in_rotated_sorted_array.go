@@ -34,6 +34,25 @@ nums is an ascending array that is possibly rotated.
 -104 <= target <= 104
 */
 
+func SearchInRotatedArrayv3(nums []int, target int) int {
+	l, r := 0, len(nums)-1
+
+	for l != r {
+		m := (l + r) / 2
+
+		if nums[m] <= target && nums[r] > target {
+			r = m - 1
+		} else {
+			l = m + 1
+		}
+		if nums[l] == target {
+			return l
+		}
+	}
+
+	return -1
+}
+
 func SearchInRotatedArrayv2(nums []int, target int) int {
 	l, r := 0, len(nums)-1
 
