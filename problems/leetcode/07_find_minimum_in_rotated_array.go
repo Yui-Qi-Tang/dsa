@@ -36,6 +36,22 @@ All the integers of nums are unique.
 nums is sorted and rotated between 1 and n times.
 */
 
+func findMinRotatedSortedArrayv15(nums []int) int {
+	l, r := 0, len(nums)-1
+
+	for l < r {
+		m := (r + l) / 2
+
+		if nums[m] > nums[r] {
+			l = m + 1
+		} else {
+			r = m
+		}
+	}
+
+	return nums[l]
+}
+
 func findMinRotatedSortedArrayv14(nums []int) int {
 	l, r := 0, len(nums)-1
 
