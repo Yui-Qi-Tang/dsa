@@ -43,6 +43,36 @@ Constraints:
 -105 <= nums[i] <= 105
 */
 
+func ThreeSumv15(nums []int) [][]int {
+	result := make([][]int, 0)
+	n := len(nums) - 1
+	sort.Ints(nums)
+
+	for i := 0; i < n-2; i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+
+		j := i + 1
+		k := n - 1
+
+		for j < k {
+			if nums[i]+nums[j]+nums[k] == 0 {
+				result = append(result, []int{nums[i], nums[j], nums[k]})
+				k--
+				for ; j < k && nums[k] == nums[k+1]; k-- {
+				}
+			} else if nums[i]+nums[j]+nums[k] > 0 {
+				k--
+			} else {
+				j++
+			}
+		}
+	}
+
+	return result
+}
+
 func ThreeSumv14(nums []int) [][]int {
 	result := make([][]int, 0)
 
