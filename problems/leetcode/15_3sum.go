@@ -43,6 +43,40 @@ Constraints:
 -105 <= nums[i] <= 105
 */
 
+func ThreeSumv17(nums []int) [][]int {
+	exist := make(map[int]bool, len(nums))
+	result := make([][]int, 0)
+	for _, num := range nums {
+		if !exist[num] {
+			exist[num] = true
+		}
+	}
+
+	nums = make([]int, 0, len(exist))
+	for k := range nums {
+		nums = append(nums, k)
+	}
+
+	for i := 0; i < len(nums)-2; i++ {
+		j := i + 1
+		k := len(nums) - 1
+
+		for j < k {
+			if nums[i]+nums[j]+nums[k] == 0 {
+				result = append(result, []int{nums[i], nums[j], nums[k]})
+				k--
+			} else if nums[i]+nums[j]+nums[k] > 0 {
+				k--
+			} else {
+				j++
+			}
+		}
+
+	}
+
+	return result
+}
+
 func ThreeSumv16(nums []int) [][]int {
 	result := make([][]int, 0)
 	// remove the duplicated values in nums
