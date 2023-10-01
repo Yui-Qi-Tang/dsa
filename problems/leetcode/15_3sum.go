@@ -43,6 +43,44 @@ Constraints:
 -105 <= nums[i] <= 105
 */
 
+func ThreeSumv18(nums []int) [][]int {
+	result := make([][]int, 0)
+
+	// remove duplicated values
+	dup := make(map[int]bool, len(nums))
+	for _, n := range nums {
+		if !dup[n] {
+			dup[n] = true
+		}
+	}
+
+	// push back the unique value into nums
+	nums = make([]int, 0, len(dup))
+	for k := range dup {
+		nums = append(nums, k)
+	}
+
+	n := len(nums)
+
+	for i := 0; i < n-2; i++ {
+		j := i + 1
+		k := n - 1
+
+		for j < k {
+			if nums[i]+nums[j]+nums[k] == 0 {
+				result = append(result, []int{nums[i], nums[j], nums[k]})
+				k--
+			} else if nums[i]+nums[j]+nums[k] > 0 {
+				k--
+			} else {
+				j++
+			}
+		}
+	}
+
+	return result
+}
+
 func ThreeSumv17(nums []int) [][]int {
 	exist := make(map[int]bool, len(nums))
 	result := make([][]int, 0)
