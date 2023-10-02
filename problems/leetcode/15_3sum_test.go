@@ -8,7 +8,8 @@ func TestThreeSum(t *testing.T) {
 
 	// run one test function at once
 	testfuncs := []func([]int) [][]int{
-		ThreeSumv18,
+		ThreeSumv19,
+		//ThreeSumv18,
 		//ThreeSumv17,
 		//ThreeSumv16,
 		//ThreeSumv15,
