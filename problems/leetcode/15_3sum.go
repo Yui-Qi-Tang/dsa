@@ -44,6 +44,40 @@ Constraints:
 -105 <= nums[i] <= 105
 */
 
+func ThreeSumv23(nums []int) [][]int {
+	result := make([][]int, 0)
+	dup := make(map[int]bool, len(nums))
+	for _, n := range nums {
+		if !dup[n] {
+			dup[n] = true
+		}
+	}
+	nums = make([]int, 0, len(dup))
+	for n := range dup {
+		nums = append(nums, n)
+	}
+
+	n := len(nums)
+
+	for i := 0; i < n-2; i++ {
+		j := i + 1
+		k := n - 1
+
+		for j < k {
+			if nums[i]+nums[j]+nums[k] == 0 {
+				result = append(result, []int{nums[i], nums[j], nums[k]})
+				k--
+			} else if nums[i]+nums[j]+nums[k] > 0 {
+				k--
+			} else {
+				j++
+			}
+		}
+	}
+
+	return result
+}
+
 func ThreeSumv22(nums []int) [][]int {
 	result := make([][]int, 0)
 
