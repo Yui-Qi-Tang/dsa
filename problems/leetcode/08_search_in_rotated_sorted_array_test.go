@@ -5,6 +5,7 @@ import "testing"
 func TestSearchInRotatedArray(t *testing.T) {
 
 	testfuncs := []func([]int, int) int{
+		SearchInRotatedArrayv21,
 		SearchInRotatedArrayv20,
 		SearchInRotatedArrayv19,
 		SearchInRotatedArrayv18,

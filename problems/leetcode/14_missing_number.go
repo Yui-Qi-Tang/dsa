@@ -33,6 +33,17 @@ All the numbers of nums are unique.
 Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
 */
 
+func missingNumberv4(nums []int) int {
+	n := len(nums)
+	total := ((1 + n) * n) / 2
+
+	for _, n := range nums {
+		total -= n
+	}
+
+	return total
+}
+
 func missingNumberv3(nums []int) int {
 	h := len(nums)
 	total := ((1 + h) * h) / 2
