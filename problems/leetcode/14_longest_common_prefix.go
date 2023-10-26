@@ -1,5 +1,7 @@
 package b75
 
+import "sort"
+
 /*
 14. Longest Common Prefix
 
@@ -18,13 +20,6 @@ Input: strs = ["dog","racecar","car"]
 Output: ""
 Explanation: There is no common prefix among the input strings.
 
-aaa
-bbb
-ccc
-ddd
-aab
-
-
 Constraints:
 
 1 <= strs.length <= 200
@@ -32,52 +27,100 @@ Constraints:
 strs[i] consists of only lowercase English letters.
 */
 
-func longestCommonPrefixv2(strs []string) string {
+func longestCommonPrefixv3(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	if len(strs) == 1 {
+		return strs[0]
+	}
+
 	var result string
+	minLen := len(strs[0])
+	for i := 1; i < len(strs); i++ {
+		minLen = min(minLen, len(strs[i]))
+	}
 
-	for i := 0; i < len(strs)-1; i++ {
-		j := i + 1
-		commonIdx := 0
-		minLen := min(len(strs[i]), len(strs[j]))
-		for k := 0; k < minLen; k++ {
-			if strs[i][k] == strs[j][k] {
-				commonIdx++
+	for i := 0; i < minLen; i++ {
+		common := ""
+		for j := 1; j < len(strs); j++ {
+			if strs[0][i] != strs[j][i] {
+				common = ""
+				break
 			}
+			common = string(strs[0][i])
 		}
 
-		if commonIdx > 0 && strs[i][:commonIdx] == strs[j][:commonIdx] {
-			result = strs[i][:commonIdx]
-		} else {
-			return ""
+		if common == "" {
+			return result
 		}
+		result += common
+	}
+
+	return result
+}
+
+func longestCommonPrefixv2(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	if len(strs) == 1 {
+		return strs[0]
+	}
+
+	var result string = ""
+	minLen := len(strs[0])
+	for i := 1; i < len(strs); i++ {
+		minLen = min(minLen, len(strs[i]))
+	}
+
+	for i := 0; i < minLen; i++ {
+		common := ""
+		for j := 1; j < len(strs); j++ {
+			if strs[0][i] != strs[j][i] {
+				common = ""
+				break
+			}
+			common = string(strs[j][i])
+		}
+
+		if common == "" {
+			break
+		}
+
+		result += common
 	}
 
 	return result
 }
 
 func longestCommonPrefixv1(strs []string) string {
-
-	var result string
-	commonIdx := 0
-	for i := 0; i < len(strs); i++ {
-		j := i + 1
-
-		if j < len(strs) {
-			mLen := min(len(strs[i]), len(strs[j]))
-
-			for k := 0; k < mLen; k++ {
-				if strs[i][k] == strs[j][k] {
-					commonIdx = k
-				}
-			}
-
-			if commonIdx > 0 && strs[i][:commonIdx] == strs[j][:commonIdx] {
-				result = strs[i][:commonIdx+1]
-			} else {
-				result = ""
-			}
-		}
+	if len(strs) == 0 {
+		return ""
 	}
 
+	if len(strs) == 1 {
+		return strs[0]
+	}
+	var result string
+	sort.Strings(strs)
+	first := strs[0]
+	for i := range first {
+		common := ""
+		for _, str := range strs[1:] {
+			if i < len(str) && first[i] == str[i] {
+				common = string(str[i])
+			} else {
+				common = ""
+			}
+		}
+
+		if common == "" {
+			break
+		}
+		result += common
+	}
 	return result
 }
