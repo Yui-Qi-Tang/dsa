@@ -29,6 +29,42 @@ Constraints:
 strs[i] consists of only lowercase English letters.
 */
 
+func longestCommonPrefixv7(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	if len(strs) == 1 {
+		return strs[0]
+	}
+
+	var result string
+
+	minLen := len(strs[0])
+	for i := 1; i < len(strs); i++ {
+		minLen = min(minLen, len(strs[i]))
+	}
+
+	for i := 0; i < minLen; i++ {
+		common := ""
+		for j := 1; j < len(strs); j++ {
+			if strs[0][i] == strs[j][i] {
+				common = string(strs[0][i])
+			} else {
+				common = ""
+				break
+			}
+		}
+
+		if common == "" {
+			break
+		}
+		result += common
+	}
+
+	return result
+}
+
 func longestCommonPrefixv6(strs []string) string {
 	if len(strs) == 0 {
 		return ""
