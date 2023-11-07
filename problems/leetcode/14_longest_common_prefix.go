@@ -29,6 +29,30 @@ Constraints:
 strs[i] consists of only lowercase English letters.
 */
 
+func longestCommonPrefixv15(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	if len(strs) == 1 {
+		return strs[0]
+	}
+
+	var result string
+	sort.Strings(strs)
+	first, last := strs[0], strs[len(strs)-1]
+	minLen := min(len(first), len(last))
+
+	for i := 0; i < minLen; i++ {
+		if first[i] == last[i] {
+			result += string(first[i])
+		} else {
+			break
+		}
+	}
+	return result
+}
+
 func longestCommonPrefixv14(strs []string) string {
 	if len(strs) == 0 {
 		return ""
