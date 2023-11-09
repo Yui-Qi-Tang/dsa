@@ -9,6 +9,7 @@ import (
 func TestClimbingStairs(t *testing.T) {
 
 	testFuncs := []func(n int) int{
+		ClimbingStairsv33,
 		ClimbingStairsv32,
 		ClimbingStairsv31,
 		ClimbingStairsv30,

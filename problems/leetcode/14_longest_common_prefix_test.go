@@ -5,6 +5,7 @@ import "testing"
 func TestLongestCommonPrefix(t *testing.T) {
 
 	testfuncs := []func([]string) string{
+		longestCommonPrefixv17,
 		longestCommonPrefixv16,
 		longestCommonPrefixv15,
 		longestCommonPrefixv14,
