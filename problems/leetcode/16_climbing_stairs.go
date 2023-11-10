@@ -27,6 +27,21 @@ Constraints:
 1 <= n <= 45
 */
 
+func ClimbingStairsv34(n int) int {
+	if n < 2 {
+		return n
+	}
+
+	n1, n2 := 1, 2
+	for i := 3; i <= n; i++ {
+		tmp := n1 + n2
+		n1 = n2
+		n2 = tmp
+	}
+
+	return n2
+}
+
 func ClimbingStairsv33(n int) int {
 	if n < 2 {
 		return n
