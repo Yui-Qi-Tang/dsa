@@ -5,6 +5,7 @@ import "testing"
 func TestMissingNumber(t *testing.T) {
 
 	testFunc := []func(nums []int) int{
+		missingNumberv24,
 		missingNumberv23,
 		missingNumberv22,
 		missingNumberv21,
