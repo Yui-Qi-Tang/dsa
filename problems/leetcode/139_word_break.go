@@ -48,6 +48,26 @@ s and wordDict[i] consist of only lowercase English letters.
 All the strings of wordDict are unique.
 */
 
+func wordBreakv4(s string, wordDict []string) bool {
+	m := make(map[string]bool, len(wordDict))
+	for i := range wordDict {
+		m[wordDict[i]] = true
+	}
+
+	isBreak := make([]bool, len(s)+1)
+	isBreak[0] = true
+	for i := 1; i <= len(s); i++ {
+		for j := i - 1; j >= 0; j-- {
+			if isBreak[j] && m[s[j:i]] {
+				isBreak[i] = true
+				break
+			}
+		}
+	}
+
+	return isBreak[len(s)]
+}
+
 func wordBreakv3(s string, wordDict []string) bool {
 	wd := make(map[string]bool, len(wordDict))
 	for i := range wordDict {
