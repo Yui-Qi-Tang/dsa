@@ -26,6 +26,23 @@ Constraints:
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 */
 
+func maxProductv4(nums []int) int {
+	curMax, curMin, result := nums[0], nums[0], nums[0]
+
+	for i := 1; i < len(nums); i++ {
+		num := nums[i]
+		if num < 0 {
+			curMax, curMin = curMin, curMax
+		}
+
+		curMax = max(num, num*curMax)
+		curMin = min(num, num*curMin)
+		result = max(result, curMax)
+	}
+
+	return result
+}
+
 func maxProductv3(nums []int) int {
 	currMax, currMin, result := nums[0], nums[0], nums[0]
 

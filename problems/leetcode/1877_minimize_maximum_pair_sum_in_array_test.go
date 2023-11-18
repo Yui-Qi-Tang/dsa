@@ -5,12 +5,10 @@ import (
 	"testing"
 )
 
-func TestMaxProduct(t *testing.T) {
+func TestMinPairSum(t *testing.T) {
+
 	testfuncs := []func([]int) int{
-		maxProductv4,
-		maxProductv3,
-		maxProductv2,
-		maxProductv1,
+		minPairSumv1,
 	}
 
 	testcases := []struct {
@@ -18,16 +16,12 @@ func TestMaxProduct(t *testing.T) {
 		want int
 	}{
 		{
-			in:   []int{-2, 0, -1},
-			want: 0,
+			in:   []int{3, 5, 2, 3},
+			want: 7,
 		},
 		{
-			in:   []int{2, 3, -2, 4},
-			want: 6,
-		},
-		{
-			in:   []int{2, 0, -1},
-			want: 2,
+			in:   []int{3, 5, 4, 2, 4, 6},
+			want: 8,
 		},
 	}
 
