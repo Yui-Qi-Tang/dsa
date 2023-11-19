@@ -7,6 +7,7 @@ import (
 
 func TestMaxProduct(t *testing.T) {
 	testfuncs := []func([]int) int{
+		maxProductv5,
 		maxProductv4,
 		maxProductv3,
 		maxProductv2,
