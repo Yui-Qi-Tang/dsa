@@ -1,7 +1,6 @@
 package codesignal
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -46,6 +45,46 @@ pairs[i].length = 2.
 [output] string
 */
 
+func swapLexOrderv3(str string, pairs [][]int) string {
+	edges := make([][]int, len(str))
+	for _, pair := range pairs {
+		v1, v2 := pair[0]-1, pair[1]-1
+		edges[v1] = append(edges[v1], v2)
+		edges[v2] = append(edges[v2], v1)
+	}
+
+	sets := make([]map[rune]int, len(str))
+	var buildSets func(i int, curr map[rune]int)
+	buildSets = func(v int, curr map[rune]int) {
+		if len(sets[v]) > 0 {
+			return
+		}
+		sets[v] = curr
+		curr[rune(str[v])]++
+		for _, u := range edges[v] {
+			buildSets(u, curr)
+		}
+	}
+	for i := range str {
+		if len(sets[i]) == 0 {
+			buildSets(i, map[rune]int{})
+		}
+	}
+	result := ""
+	for i := range str {
+		set := sets[i]
+		for c := 'z'; c >= 'a'; c-- {
+			if set[rune(c)] > 0 {
+				result += string(c)
+				set[rune(c)]--
+				break
+			}
+		}
+	}
+
+	return result
+}
+
 func swapLexOrderv2(str string, pairs [][]int) string {
 	edges := make([][]int, len(str))
 	for _, pair := range pairs {
@@ -54,7 +93,6 @@ func swapLexOrderv2(str string, pairs [][]int) string {
 		edges[v2] = append(edges[v2], v1)
 	}
 
-	fmt.Println(edges)
 	var buildSets func(s string, v int, tmp map[byte]int, ss []map[byte]int, e [][]int)
 	buildSets = func(s string, v int, tmp map[byte]int, ss []map[byte]int, e [][]int) {
 		if len(ss[v]) > 0 {

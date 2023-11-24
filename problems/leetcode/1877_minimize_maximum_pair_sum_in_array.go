@@ -14,8 +14,6 @@ Each element of nums is in exactly one pair, and
 The maximum pair sum is minimized.
 Return the minimized maximum pair sum after optimally pairing up the elements.
 
-
-
 Example 1:
 
 Input: nums = [3,5,2,3]
@@ -29,7 +27,6 @@ Output: 8
 Explanation: The elements can be paired up into pairs (3,5), (4,4), and (6,2).
 The maximum pair sum is max(3+5, 4+4, 6+2) = max(8, 8, 8) = 8.
 
-
 Constraints:
 
 n == nums.length
@@ -37,6 +34,18 @@ n == nums.length
 n is even.
 1 <= nums[i] <= 105
 */
+func minPairSumv7(nums []int) int {
+	sort.Ints(nums)
+
+	l, r := 0, len(nums)-1
+	result := 0
+	for l < r {
+		result = max(result, nums[l]+nums[r])
+		l++
+		r--
+	}
+	return result
+}
 
 func minPairSumv6(nums []int) int {
 	sort.Ints(nums)

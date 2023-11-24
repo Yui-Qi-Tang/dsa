@@ -28,6 +28,30 @@ Output: [[],[0]]
 HINT: each element has 2 choices, 1 for picked up and 2 do nothing
 */
 
+func subsetsv6(nums []int) [][]int {
+	result := make([][]int, 0)
+
+	var dfs func(i int, curr []int)
+
+	dfs = func(i int, curr []int) {
+		if i >= len(nums) {
+			cp := make([]int, len(curr))
+			copy(cp, curr)
+			result = append(result, curr)
+			return
+		}
+
+		curr = append(curr, nums[i])
+		dfs(i+1, curr)
+
+		curr = curr[:len(curr)-1]
+		dfs(i+1, curr)
+	}
+
+	dfs(0, []int{})
+	return result
+}
+
 func subsetsv5(nums []int) [][]int {
 	result := make([][]int, 0)
 

@@ -42,6 +42,35 @@ All elements of candidates are distinct.
 HINT: we should avoid the duplicated premutation
 */
 
+func combinationSumv6(candidates []int, target int) [][]int {
+	result := make([][]int, 0)
+
+	var dfs func(i int, sum int, curr []int)
+	dfs = func(i, sum int, curr []int) {
+		if sum == target {
+			cp := make([]int, len(curr))
+			copy(cp, curr)
+			result = append(result, cp)
+			return
+		}
+
+		if i >= len(candidates) || sum > target {
+			return
+		}
+
+		// picked itself
+		curr = append(curr, candidates[i])
+		dfs(i, sum+candidates[i], curr)
+
+		// no picked
+		curr = curr[:len(curr)-1]
+		dfs(i+1, sum, curr)
+	}
+
+	dfs(0, 0, []int{})
+	return result
+}
+
 func combinationSumv5(candidates []int, target int) [][]int {
 	result := make([][]int, 0)
 
