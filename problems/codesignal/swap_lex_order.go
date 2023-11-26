@@ -43,7 +43,55 @@ Guaranteed constraints:
 pairs[i].length = 2.
 
 [output] string
+
+HINT:
+1. find the edges/connections for swapping on each chars
+2. build the sets of counts on each chars by 1
+3. make the result from 2
 */
+
+func swapLexOrderv4(str string, pairs [][]int) string {
+	edges := make([][]int, len(str))
+	for _, pair := range pairs {
+		v1, v2 := pair[0]-1, pair[1]-1
+		edges[v1] = append(edges[v1], v2)
+		edges[v2] = append(edges[v2], v1)
+	}
+	sets := make([]map[rune]int, len(str))
+	var build func(i int, curr map[rune]int)
+	build = func(i int, curr map[rune]int) {
+		// base case: if the sets[i] exists then skip it
+		if len(sets[i]) > 0 {
+			return
+		}
+
+		sets[i] = curr
+		curr[rune(str[i])]++
+		for _, u := range edges[i] {
+			build(u, curr)
+		}
+	}
+
+	for i := range str {
+		if len(sets[i]) == 0 {
+			build(i, map[rune]int{})
+		}
+	}
+
+	result := ""
+
+	for i := range str {
+		for j := 'z'; j >= 'a'; j-- {
+			if sets[i][j] > 0 {
+				result += string(j)
+				sets[i][j]--
+				break
+			}
+		}
+	}
+
+	return result
+}
 
 func swapLexOrderv3(str string, pairs [][]int) string {
 	edges := make([][]int, len(str))
