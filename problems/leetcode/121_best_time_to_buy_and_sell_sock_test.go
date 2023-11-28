@@ -5,6 +5,7 @@ import "testing"
 func TestBestTimeToBuAndSellStock(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		maxProfitV35,
 		maxProfitV34,
 		maxProfitV33,
 		maxProfitV32,
