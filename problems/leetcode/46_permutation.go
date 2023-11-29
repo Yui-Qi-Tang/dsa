@@ -31,6 +31,30 @@ All the integers of nums are unique.
 HINT: pop itself and make permutation on another elements
 */
 
+func permutev3(nums []int) [][]int {
+	n := len(nums)
+	cp := make([]int, n)
+	copy(cp, nums)
+	if n == 1 {
+		return [][]int{cp}
+	}
+
+	result := make([][]int, 0)
+	for n > 0 {
+		v := nums[0]
+		nums = nums[1:]
+		perm := permutev3(nums)
+		for i := range perm {
+			perm[i] = append(perm[i], v)
+		}
+		result = append(result, perm...)
+		nums = append(nums, v)
+		n--
+	}
+
+	return result
+}
+
 // permutev2 is another way to recursive the subproblems to solve the problem
 // this is more efficient than v1
 func permutev2(nums []int) [][]int {

@@ -26,6 +26,24 @@ Constraints:
 0 <= prices[i] <= 104
 */
 
+func maxProfitV36(prices []int) int {
+	l, r, n := 0, 1, len(prices)
+
+	result := 0
+
+	for l < n && r < n {
+		if prices[r] > prices[l] {
+			result = max(result, prices[r]-prices[l])
+			r++
+		} else {
+			l = r
+			r++
+		}
+	}
+
+	return result
+}
+
 func maxProfitV35(prices []int) int {
 	result := 0
 

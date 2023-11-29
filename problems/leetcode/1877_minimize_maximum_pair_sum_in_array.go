@@ -35,6 +35,21 @@ n is even.
 1 <= nums[i] <= 105
 */
 
+func minPairSumv11(nums []int) int {
+	sort.Ints(nums)
+	l, r := 0, len(nums)-1
+
+	result := 0
+
+	for l < r {
+		result = max(result, nums[l]+nums[r])
+		r--
+		l++
+	}
+
+	return result
+}
+
 func minPairSumv10(nums []int) int {
 	sort.Ints(nums)
 
