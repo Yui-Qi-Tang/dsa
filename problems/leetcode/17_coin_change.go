@@ -37,6 +37,26 @@ Constraints:
 0 <= amount <= 104
 */
 
+func coinChangev33(coins []int, amount int) int {
+	dp := make([]int, amount+1)
+
+	for i := 1; i <= amount; i++ {
+		q := math.MaxInt
+		for _, coin := range coins {
+			if i-coin >= 0 && dp[i-coin] != -1 {
+				q = min(q, 1+dp[i-coin])
+			}
+		}
+
+		if q == math.MaxInt {
+			q = -1
+		}
+		dp[i] = q
+	}
+
+	return dp[amount]
+}
+
 func coinChangev32(coins []int, amount int) int {
 	if len(coins) == 0 {
 		return 0

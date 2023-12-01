@@ -2,12 +2,12 @@ package b75
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
 )
 
 func TestSubsets(t *testing.T) {
 	testfunc := []func([]int) [][]int{
+		subsetsv12,
 		subsetsv11,
 		subsetsv10,
 		subsetsv9,
@@ -42,8 +42,9 @@ func TestSubsets(t *testing.T) {
 		t.Run(fmt.Sprintf("test function %d", i), func(t *testing.T) {
 			for j, tt := range testcases {
 				ans := f(tt.in)
-				if !reflect.DeepEqual(ans, tt.want) {
-					t.Fatalf("case[%d]: it should be: %v, but got: %v", j, tt.want, ans)
+				lackElem := lacks(tt.want, ans)
+				if len(lackElem) != 0 {
+					t.Fatalf("case[%d]: it should be %v, but got %v, diff :%v", j, tt.want, ans, lackElem)
 				}
 			}
 		})
