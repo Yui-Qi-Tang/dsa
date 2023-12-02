@@ -7,9 +7,11 @@ import (
 /*
 322. Coin Change
 Medium
-You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+You are given an integer array coins representing coins of different denominations and
+an integer amount representing a total amount of money.
 
-Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+Return the fewest number of coins that you need to make up that amount.
+If that amount of money cannot be made up by any combination of the coins, return -1.
 
 You may assume that you have an infinite number of each kind of coin.
 
@@ -36,6 +38,26 @@ Constraints:
 1 <= coins[i] <= 231 - 1
 0 <= amount <= 104
 */
+
+func coinChangev34(coins []int, amount int) int {
+	dp := make([]int, amount+1)
+
+	for i := 1; i <= amount; i++ {
+		q := math.MaxInt
+		for _, coin := range coins {
+			if i-coin >= 0 && dp[i-coin] != -1 {
+				q = min(q, 1+dp[i-coin])
+			}
+		}
+
+		if q == math.MaxInt {
+			q = -1
+		}
+		dp[i] = q
+	}
+
+	return dp[amount]
+}
 
 func coinChangev33(coins []int, amount int) int {
 	dp := make([]int, amount+1)
