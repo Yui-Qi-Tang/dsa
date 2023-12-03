@@ -8,6 +8,7 @@ import (
 func TestWordBreak(t *testing.T) {
 
 	testfuncs := []func(string, []string) bool{
+		wordBreakv20,
 		wordBreakv19,
 		wordBreakv18,
 		wordBreakv17,

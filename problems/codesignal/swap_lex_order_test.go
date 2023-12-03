@@ -7,6 +7,7 @@ import (
 
 func TestSwapLexOrder(t *testing.T) {
 	testfuncs := []func(string, [][]int) string{
+		swapLexOrderv11,
 		swapLexOrderv10,
 		swapLexOrderv9,
 		swapLexOrderv8,
