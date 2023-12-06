@@ -50,6 +50,49 @@ HINT:
 3. make the result from 2
 */
 
+func swapLexOrderv14(str string, pairs [][]int) string {
+	edges := make([][]int, len(str))
+	for _, pair := range pairs {
+		v1, v2 := pair[0]-1, pair[1]-1
+		edges[v1] = append(edges[v1], v2)
+		edges[v2] = append(edges[v2], v1)
+	}
+
+	sets := make([]map[rune]int, len(str))
+	var buildSets func(v int, curr map[rune]int)
+	buildSets = func(v int, curr map[rune]int) {
+		if len(sets[v]) > 0 {
+			return
+		}
+
+		curr[rune(str[v])]++
+		sets[v] = curr
+		for _, u := range edges[v] {
+			buildSets(u, curr)
+		}
+	}
+
+	for i := range str {
+		if len(sets[i]) == 0 {
+			buildSets(i, map[rune]int{})
+		}
+	}
+
+	result := ""
+
+	for i := range str {
+		for j := 'z'; j >= 'a'; j-- {
+			if sets[i][j] > 0 {
+				sets[i][j]--
+				result += string(j)
+				break
+			}
+		}
+	}
+
+	return result
+}
+
 func swapLexOrderv13(str string, pairs [][]int) string {
 	edges := make([][]int, len(str))
 	for _, pair := range pairs {
