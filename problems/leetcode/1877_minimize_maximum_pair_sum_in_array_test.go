@@ -8,6 +8,7 @@ import (
 func TestMinPairSum(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		minPairSumv22,
 		minPairSumv21,
 		minPairSumv20,
 		minPairSumv19,
