@@ -7,6 +7,7 @@ import (
 
 func TestSubsets(t *testing.T) {
 	testfunc := []func([]int) [][]int{
+		subsetsv24,
 		subsetsv23,
 		subsetsv22,
 		subsetsv21,
