@@ -36,6 +36,18 @@ Constraints:
 0 <= nums[i] <= 400
 */
 
+func hourseRobber31(nums []int) int {
+	r1, r2 := 0, 0
+
+	for i := 0; i < len(nums); i++ {
+		tmp := max(r1+nums[i], r2)
+		r1 = r2
+		r2 = tmp
+	}
+
+	return r2
+}
+
 func hourseRobber30(nums []int) int {
 	r1, r2 := 0, 0
 

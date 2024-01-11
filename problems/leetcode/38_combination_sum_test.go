@@ -7,6 +7,8 @@ import (
 
 func TestCombinationSum(t *testing.T) {
 	testfuncs := []func([]int, int) [][]int{
+		combinationSumv42,
+		combinationSumv41,
 		combinationSumv40,
 		combinationSumv39,
 		combinationSumv38,

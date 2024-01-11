@@ -8,6 +8,8 @@ import (
 
 func TestPermutation(t *testing.T) {
 	testfuncs := []func([]int) [][]int{
+		permutev34,
+		permutev33,
 		permutev32,
 		permutev31,
 		permutev30,
