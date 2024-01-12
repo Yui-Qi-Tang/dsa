@@ -40,6 +40,91 @@ All the values of coins are unique.
 0 <= amount <= 5000
 */
 
+// top-down
+func changev25(amount int, coins []int) int {
+
+	dp := make(map[int]map[int]int) // idx: amt -> ways
+	var dfs func(i, amt int) int
+	dfs = func(i, amt int) int {
+		if i == len(coins) {
+			if amt == amount {
+				return 1
+			} else {
+				return 0
+			}
+		}
+
+		if amt > amount {
+			return 0
+		}
+
+		if v, ok := dp[i][amt]; ok {
+			return v
+		}
+
+		dp[i] = make(map[int]int)
+		dp[i][amt] = dfs(i, amt+coins[i]) + dfs(i+1, amt)
+		return dp[i][amt]
+	}
+
+	return dfs(0, 0)
+}
+
+// bottom up
+func changev24(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+
+	for _, coin := range coins {
+		for j := coin; j <= amount; j++ {
+			dp[j] += dp[j-coin]
+		}
+	}
+
+	return dp[amount]
+}
+
+// bottom-up way
+func changev23(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+	for _, coin := range coins {
+		for j := coin; j <= amount; j++ {
+			dp[j] += dp[j-coin]
+		}
+	}
+	return dp[amount]
+}
+
+// top-down way
+func changev22(amount int, coins []int) int {
+	dp := make(map[int]map[int]int) // idx: amt -> ways
+
+	var dfs func(i, amt int) int
+	dfs = func(i, amt int) int {
+		if i == len(coins) {
+			if amt == amount {
+				return 1
+			} else {
+				return 0
+			}
+		}
+
+		if amt > amount {
+			return 0
+		}
+
+		if v, ok := dp[i][amt]; ok {
+			return v
+		}
+
+		dp[i] = make(map[int]int)
+		dp[i][amt] = dfs(i, amt+coins[i]) + dfs(i+1, amt)
+		return dp[i][amt]
+	}
+	return dfs(0, 0)
+}
+
 func changev21(amount int, coins []int) int {
 	dp := make([]int, amount+1)
 	dp[0] = 1

@@ -37,6 +37,29 @@ Constraints:
 -1000 <= target <= 1000
 */
 
+func findTargetSumWaysv19(nums []int, target int) int {
+
+	dp := make(map[int]map[int]int) // idx: sum -> ways
+	var dfs func(i, sum int) int
+	dfs = func(i, sum int) int {
+		if i == len(nums) {
+			if sum == target {
+				return 1
+			} else {
+				return 0
+			}
+		}
+		if v, ok := dp[i][sum]; ok {
+			return v
+		}
+		dp[i] = make(map[int]int)
+		dp[i][sum] = dfs(i+1, sum+nums[i]) + dfs(i+1, sum-nums[i])
+		return dp[i][sum]
+	}
+
+	return dfs(0, 0)
+}
+
 func findTargetSumWaysv18(nums []int, target int) int {
 	dp := make(map[int]map[int]int) // idx: sum -> ways
 
@@ -133,7 +156,6 @@ func findTargetSumWaysv15(nums []int, target int) int {
 	}
 
 	return dfs(0, 0)
-
 }
 
 func findTargetSumWaysv14(nums []int, target int) int {
@@ -186,7 +208,6 @@ func findTargetSumWaysv13(nums []int, target int) int {
 	}
 
 	return dfs(0, 0)
-
 }
 
 func findTargetSumWaysv12(nums []int, target int) int {

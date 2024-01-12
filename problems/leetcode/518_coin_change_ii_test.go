@@ -7,11 +7,15 @@ func TestCoinChangeII(t *testing.T) {
 	// 1-9 too slow to use, except 2
 	testFuncs := []func(amount int, coins []int) int{
 		// 1-D dp, for now, I can't understand what's going on...
+		changev24,
+		changev23,
 		changev21,
 		changev12,
 		changev2, // the fastest, this can be passed by leetcode
 
 		// dfs way
+		changev25,
+		changev22,
 		changev20,
 		changev19,
 		changev18,

@@ -4,6 +4,7 @@ import "testing"
 
 func TestCountSubstrings(t *testing.T) {
 	testFuncs := []func(s string) int{
+		countSubstringsv15,
 		countSubstringsv14,
 		countSubstringsv13,
 		countSubstringsv12,

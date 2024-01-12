@@ -1,6 +1,8 @@
 package b75
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 64. Minimum Path Sum
@@ -36,6 +38,26 @@ n == grid[i].length
 1 <= m, n <= 200
 0 <= grid[i][j] <= 100
 */
+
+func minPathSumv13(grid [][]int) int {
+	m, n := len(grid), len(grid[0])
+	dp := make([][]int, m)
+	for i := 0; i < m; i++ {
+		dp[i] = make([]int, n)
+		for j := 0; j < n; j++ {
+			if i == 0 && j == 0 {
+				dp[i][j] = grid[i][j]
+			} else if i == 0 {
+				dp[i][j] = grid[i][j] + dp[i][j-1]
+			} else if j == 0 {
+				dp[i][j] = grid[i][j] + dp[i-1][j]
+			} else {
+				dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])
+			}
+		}
+	}
+	return dp[m-1][n-1]
+}
 
 func minPathSumv12(grid [][]int) int {
 	m, n := len(grid), len(grid[0])

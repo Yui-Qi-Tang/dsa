@@ -5,6 +5,7 @@ import "testing"
 func TestUniquePaths(t *testing.T) {
 
 	testFuncs := []func(m, n int) int{
+		uniquePathsv13,
 		uniquePathsv12,
 		uniquePathsv11,
 		uniquePathsv10,

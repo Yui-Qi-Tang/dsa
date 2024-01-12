@@ -11,9 +11,11 @@ func TestContainDuplicate(t *testing.T) {
 		{in: []int{1, 2, 3, 1}, want: true},
 		{in: []int{1, 2, 3, 4}, want: false},
 		{in: []int{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}, want: true},
+		{in: []int{0}, want: false},
 	}
 
 	testfuncs := []func([]int) bool{
+		ContainDuplicatev31,
 		ContainDuplicatev30,
 		ContainDuplicatev29,
 		ContainDuplicatev28,
