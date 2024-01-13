@@ -5,6 +5,7 @@ import "testing"
 func TestFindPeakElement(t *testing.T) {
 
 	testFuncs := []func(nums []int) int{
+		findPeakElementv16,
 		findPeakElementv15,
 		findPeakElementv14,
 		findPeakElementv13,

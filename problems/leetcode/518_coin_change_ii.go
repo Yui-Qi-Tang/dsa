@@ -40,6 +40,45 @@ All the values of coins are unique.
 0 <= amount <= 5000
 */
 
+func changev27(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+
+	return dp[amount]
+}
+
+// top-down
+func changev26(amount int, coins []int) int {
+	var dfs func(i, amt int) int
+	dp := make(map[int]map[int]int)
+	dfs = func(i, amt int) int {
+		if i == len(coins) {
+			if amt == amount {
+				return 1
+			}
+			return 0
+		}
+
+		if amt > amount {
+			return 0
+		}
+
+		if v, exist := dp[i][amt]; exist {
+			return v
+		}
+		dp[i] = make(map[int]int)
+		dp[i][amt] = dfs(i+1, amt) + dfs(i, amt+coins[i])
+		return dp[i][amt]
+	}
+
+	return dfs(0, 0)
+}
+
 // top-down
 func changev25(amount int, coins []int) int {
 

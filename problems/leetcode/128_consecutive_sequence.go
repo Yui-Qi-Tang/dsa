@@ -29,6 +29,26 @@ Constraints:
 -109 <= nums[i] <= 109
 */
 
+func longestConsecutivev43(nums []int) int {
+	m := make(map[int]bool, len(nums))
+	for i := range nums {
+		m[nums[i]] = true
+	}
+
+	result := 0
+
+	for _, num := range nums {
+		if !m[num-1] {
+			longest := 0
+			for ; m[num+longest]; longest++ {
+			}
+			result = max(result, longest)
+		}
+	}
+
+	return result
+}
+
 func longestConsecutivev42(nums []int) int {
 	m := make(map[int]bool, len(nums))
 	for _, num := range nums {
