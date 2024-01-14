@@ -5,6 +5,7 @@ import "testing"
 func TestMinPathSum(t *testing.T) {
 
 	testFuncs := []func(grid [][]int) int{
+		minPathSumv15,
 		minPathSumv14,
 		minPathSumv13,
 		minPathSumv12,
@@ -46,7 +47,8 @@ func TestMinPathSum(t *testing.T) {
 	for i, f := range testFuncs {
 		t.Logf("test function %d...", i)
 		for j, tt := range testcases {
-			// HINT: copy 2-d slice directly, the copy func. will just copy the pointer
+			// HINT: copy 2-d slice directly,
+			// the copy func. will just copy the pointer
 			cp := make([][]int, len(tt.in))
 			for i := range cp {
 				cp[i] = make([]int, len(tt.in[i]))

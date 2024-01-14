@@ -35,6 +35,19 @@ Constraints:
 Only one valid answer exists.
 */
 
+func TwoSumv34(nums []int, target int) []int {
+	exist := make(map[int]int)
+
+	for i, num := range nums {
+		if v, yes := exist[target-num]; yes {
+			return []int{v, i}
+		}
+		exist[num] = i
+	}
+
+	return nil
+}
+
 func TwoSumv33(nums []int, target int) []int {
 	diff := make(map[int]int, 0)
 

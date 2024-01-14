@@ -40,6 +40,140 @@ All the values of coins are unique.
 0 <= amount <= 5000
 */
 
+func changev34(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+	return dp[amount]
+}
+
+// dp: top-down
+func changev33(amount int, coins []int) int {
+	var dfs func(i, amt int) int
+	dp := make(map[int]map[int]int) // idx: amt -> ways
+
+	dfs = func(i, amt int) int {
+		// first, check the table
+		if ans, exist := dp[i][amt]; exist {
+			return ans
+		}
+		// second, compute the answer
+		if i == len(coins) { // picking the coins is done
+			if amt == amount {
+				return 1
+			}
+			return 0
+		}
+
+		if amt > amount {
+			return 0
+		}
+		dp[i] = make(map[int]int)
+		// reuse the same coin + pick next coin
+		dp[i][amt] = dfs(i, amt+coins[i]) + dfs(i+1, amt)
+		return dp[i][amt]
+	}
+	return dfs(0, 0)
+}
+
+// bottom up
+func changev32(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1 // base case: if amount == 0 -> exchange done -> return 1
+
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+
+	return dp[amount]
+}
+
+// top-down
+func changev31(amount int, coins []int) int {
+	var dfs func(i, amt int) int
+	dp := make(map[int]map[int]int)
+	dfs = func(i, amt int) int {
+		if i == len(coins) {
+			if amt == amount {
+				return 1
+			}
+			return 0
+		}
+
+		if amt > amount {
+			return 0
+		}
+
+		if v, exist := dp[i][amt]; exist {
+			return v
+		}
+		dp[i] = make(map[int]int)
+		dp[i][amt] = dfs(i, amt+coins[i]) + dfs(i+1, amt)
+		return dp[i][amt]
+	}
+	return dfs(0, 0)
+}
+
+// bottom-up
+func changev30(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+	return dp[amount]
+}
+
+// bottom-up
+func changev29(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+	return dp[amount]
+}
+
+// top-down
+func changev28(amount int, coins []int) int {
+	var dfs func(i, amt int) int
+	dp := make(map[int]map[int]int)
+	dfs = func(i, amt int) int {
+		if i == len(coins) {
+			if amt == amount {
+				return 1
+			}
+			return 0
+		}
+
+		if amt > amount {
+			return 0
+		}
+
+		if v, exist := dp[i][amt]; exist {
+			return v
+		}
+		dp[i] = make(map[int]int)
+		dp[i][amt] = dfs(i, amt+coins[i]) + dfs(i+1, amt)
+		return dp[i][amt]
+	}
+
+	return dfs(0, 0)
+}
+
+// bottom-up
 func changev27(amount int, coins []int) int {
 	dp := make([]int, amount+1)
 	dp[0] = 1

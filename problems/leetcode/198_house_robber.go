@@ -36,6 +36,18 @@ Constraints:
 0 <= nums[i] <= 400
 */
 
+func houseRobber34(nums []int) int {
+	r1, r2 := 0, 0
+
+	for _, num := range nums {
+		tmp := max(r2, r1+num)
+		r1 = r2
+		r2 = tmp
+	}
+
+	return r2
+}
+
 func houseRobber33(nums []int) int {
 	r1, r2 := 0, 0
 
@@ -48,7 +60,7 @@ func houseRobber33(nums []int) int {
 	return r2
 }
 
-func hourseRobber32(nums []int) int {
+func houseRobber32(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -60,7 +72,7 @@ func hourseRobber32(nums []int) int {
 	return r2
 }
 
-func hourseRobber31(nums []int) int {
+func houseRobber31(nums []int) int {
 	r1, r2 := 0, 0
 
 	for i := 0; i < len(nums); i++ {
@@ -72,7 +84,7 @@ func hourseRobber31(nums []int) int {
 	return r2
 }
 
-func hourseRobber30(nums []int) int {
+func houseRobber30(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -84,7 +96,7 @@ func hourseRobber30(nums []int) int {
 	return r2
 }
 
-func hourseRobber29(nums []int) int {
+func houseRobber29(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -96,7 +108,7 @@ func hourseRobber29(nums []int) int {
 	return r2
 }
 
-func hourseRobber28(nums []int) int {
+func houseRobber28(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -108,7 +120,7 @@ func hourseRobber28(nums []int) int {
 	return r2
 }
 
-func hourseRobber27(nums []int) int {
+func houseRobber27(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -120,7 +132,7 @@ func hourseRobber27(nums []int) int {
 	return r2
 }
 
-func hourseRobber26(nums []int) int {
+func houseRobber26(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -132,7 +144,7 @@ func hourseRobber26(nums []int) int {
 	return r2
 }
 
-func hourseRobber25(nums []int) int {
+func houseRobber25(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -144,7 +156,7 @@ func hourseRobber25(nums []int) int {
 	return r2
 }
 
-func hourseRobber24(nums []int) int {
+func houseRobber24(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -156,7 +168,7 @@ func hourseRobber24(nums []int) int {
 	return r2
 }
 
-func hourseRobber23(nums []int) int {
+func houseRobber23(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -168,7 +180,7 @@ func hourseRobber23(nums []int) int {
 	return r2
 }
 
-func hourseRobber22(nums []int) int {
+func houseRobber22(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -180,7 +192,7 @@ func hourseRobber22(nums []int) int {
 	return r2
 }
 
-func hourseRobber21(nums []int) int {
+func houseRobber21(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -192,7 +204,7 @@ func hourseRobber21(nums []int) int {
 	return r2
 }
 
-func hourseRobber20(nums []int) int {
+func houseRobber20(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -204,7 +216,7 @@ func hourseRobber20(nums []int) int {
 	return r2
 }
 
-func hourseRobber19(nums []int) int {
+func houseRobber19(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -216,7 +228,7 @@ func hourseRobber19(nums []int) int {
 	return r2
 }
 
-func hourseRobber18(nums []int) int {
+func houseRobber18(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -228,7 +240,7 @@ func hourseRobber18(nums []int) int {
 	return r2
 }
 
-func hourseRobber17(nums []int) int {
+func houseRobber17(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -240,7 +252,7 @@ func hourseRobber17(nums []int) int {
 	return r2
 }
 
-func hourseRobber16(nums []int) int {
+func houseRobber16(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -251,7 +263,7 @@ func hourseRobber16(nums []int) int {
 	return r2
 }
 
-func hourseRobber15(nums []int) int {
+func houseRobber15(nums []int) int {
 	r1, r2 := 0, 0
 
 	for _, num := range nums {
@@ -449,7 +461,7 @@ func RobBetterDPv2(nums []int) int {
 
 /*
 // Bad implementation here, please read them and keep learning what mistake I did.
-func hourseRobber(houses []int) int {
+func houseRobber(houses []int) int {
 
 	if houses == nil {
 		return 0

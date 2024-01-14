@@ -2,19 +2,12 @@ package b75
 
 import "testing"
 
-func TestCoinChangeII(t *testing.T) {
-
-	// 1-9 too slow to use, except 2
+func TestCoinChangeIIWithDPTopDown(t *testing.T) {
+	t.Log("start testing the dp top down...")
 	testFuncs := []func(amount int, coins []int) int{
-		// 1-D dp, for now, I can't understand what's going on...
-		changev27,
-		changev24,
-		changev23,
-		changev21,
-		changev12,
-		changev2, // the fastest, this can be passed by leetcode
-
-		// dfs way
+		changev33,
+		changev31,
+		changev28,
 		changev26,
 		changev25,
 		changev22,
@@ -43,7 +36,67 @@ func TestCoinChangeII(t *testing.T) {
 		coins  []int
 		want   int
 	}{
-		// edge case, the can't be processed by dfs way
+		// edge case, the can't be processed by top down way
+		// {
+		// 	amount: 500,
+		// 	coins:  []int{3, 5, 7, 8, 9, 10, 11},
+		// 	want:   35502874,
+		// },
+		{
+			amount: 5,
+			coins:  []int{1, 2, 5},
+			want:   4,
+		},
+		{
+			amount: 3,
+			coins:  []int{2},
+			want:   0,
+		},
+		{
+			amount: 10,
+			coins:  []int{10},
+			want:   1,
+		},
+		{
+			amount: 5,
+			coins:  []int{1, 5},
+			want:   2,
+		},
+	}
+
+	for i, f := range testFuncs {
+		for j, tt := range testcases {
+			ans := f(tt.amount, tt.coins)
+			if ans != tt.want {
+				t.Fatalf("=> case[%d]: it should be %d, but got %d", j, tt.want, ans)
+			}
+		}
+		t.Logf("... function %d is passed ...", i)
+	}
+	t.Log("... Passed")
+}
+
+func TestCoinChangeIIWithBottomUp(t *testing.T) {
+	t.Log("start testing the dp bottom up...")
+
+	testFuncs := []func(amount int, coins []int) int{
+		changev34,
+		changev32,
+		changev30,
+		changev29,
+		changev27,
+		changev24,
+		changev23,
+		changev21,
+		changev12,
+		changev2,
+	}
+
+	testcases := []struct {
+		amount int
+		coins  []int
+		want   int
+	}{
 		{
 			amount: 500,
 			coins:  []int{3, 5, 7, 8, 9, 10, 11},
@@ -64,15 +117,15 @@ func TestCoinChangeII(t *testing.T) {
 			coins:  []int{10},
 			want:   1,
 		},
+		{
+			amount: 5,
+			coins:  []int{1, 5},
+			want:   2,
+		},
 	}
 
 	for i, f := range testFuncs {
-		t.Logf("test function %d...", i)
 		for j, tt := range testcases {
-			if j == 0 && i != 0 {
-				// skip case[0] if function isn't 0
-				continue
-			}
 			ans := f(tt.amount, tt.coins)
 			if ans != tt.want {
 				t.Fatalf("=> case[%d]: it should be %d, but got %d", j, tt.want, ans)
@@ -80,5 +133,5 @@ func TestCoinChangeII(t *testing.T) {
 		}
 		t.Logf("... function %d is passed ...", i)
 	}
-
+	t.Log("... Passed")
 }
