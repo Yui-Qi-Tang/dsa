@@ -38,6 +38,16 @@ Constraints:
 0 <= cost[i] <= 999
 */
 
+func minCostClimbingStairsv21(cost []int) int {
+	a, b := cost[len(cost)-1], 0
+	for n := len(cost) - 2; n >= 0; n-- {
+		cost[n] += min(a, b)
+		b = a
+		a = cost[n]
+	}
+	return min(a, b)
+}
+
 func minCostClimbingStairsv20(cost []int) int {
 	a, b := cost[len(cost)-1], 0
 	for i := len(cost) - 2; i >= 0; i-- {

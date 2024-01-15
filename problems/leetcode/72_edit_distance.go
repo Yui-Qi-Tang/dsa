@@ -45,6 +45,32 @@ word1 and word2 consist of lowercase English letters.
 
 */
 
+func editDistancev17(word1, word2 string) int {
+	m, n := len(word1), len(word2)
+	dp := make([][]int, m+1) // +1 for ""
+	for i := range dp {
+		dp[i] = make([]int, n+1) // +1 for ""
+		dp[i][0] = i
+	}
+
+	for i := 1; i <= n; i++ {
+		dp[0][i] = i
+	}
+
+	for i := 1; i <= m; i++ {
+		for j := 1; j <= n; j++ {
+			if word1[i-1] == word2[j-1] {
+				dp[i][j] = dp[i-1][j-1] // replace
+			} else {
+				// at least 1 operation for edition
+				dp[i][j] = 1 + min(dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1]))
+			}
+		}
+	}
+
+	return dp[m][n]
+}
+
 func editDistancev16(word1, word2 string) int {
 	m, n := len(word1), len(word2)
 

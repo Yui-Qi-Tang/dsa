@@ -36,6 +36,26 @@ Constraints:
 1 <= m, n <= 100
 */
 
+func uniquePathsv16(m, n int) int {
+	maze := make([][]int, m)
+	for i := range maze {
+		maze[i] = make([]int, n)
+		maze[i][0] = 1
+	}
+
+	for i := 1; i < n; i++ {
+		maze[0][i] = 1
+	}
+
+	for i := 1; i < m; i++ {
+		for j := 1; j < n; j++ {
+			maze[i][j] = maze[i][j-1] + maze[i-1][j]
+		}
+	}
+
+	return maze[m-1][n-1]
+}
+
 func uniquePathsv15(m, n int) int {
 	dp := make([][]int, m)
 	for i := range dp {

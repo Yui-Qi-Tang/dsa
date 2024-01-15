@@ -32,6 +32,26 @@ n == matrix[i].length
 matrix[i][j] is '0' or '1'.
 */
 
+func maximalSquarev27(matrix [][]byte) int {
+	m, n := len(matrix), len(matrix[0])
+	result := 0
+	dp := make([][]int, m+1)
+	for i := range dp {
+		dp[i] = make([]int, n+1)
+	}
+
+	for i := 1; i <= m; i++ {
+		for j := 1; j <= n; j++ {
+			if matrix[i-1][j-1] == '1' {
+				dp[i][j] = 1 + min(dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1]))
+				result = max(result, dp[i][j])
+			}
+		}
+	}
+
+	return result * result
+}
+
 func maximalSquarev26(matrix [][]byte) int {
 	m, n := len(matrix), len(matrix[0])
 	dp := make([][]int, m+1)

@@ -7,6 +7,7 @@ import (
 func TestMaximalSquare(t *testing.T) {
 
 	tfs := []func([][]byte) int{
+		maximalSquarev27,
 		maximalSquarev26,
 		maximalSquarev25,
 		maximalSquarev24,
