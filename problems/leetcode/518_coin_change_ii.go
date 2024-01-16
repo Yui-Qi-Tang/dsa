@@ -40,6 +40,44 @@ All the values of coins are unique.
 0 <= amount <= 5000
 */
 
+func changev38(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+	return dp[amount]
+}
+
+// top-down
+func changev37(amount int, coins []int) int {
+	dp := make(map[int]map[int]int) // idx: amt -> ways
+	var backtrack func(i, amt int) int
+	backtrack = func(i, amt int) int {
+		if i == len(coins) {
+			if amt == amount {
+				return 1
+			}
+			return 0
+		}
+
+		if amt > amount {
+			return 0
+		}
+
+		if v, exist := dp[i][amt]; exist {
+			return v
+		}
+
+		dp[i] = make(map[int]int)
+		dp[i][amt] = backtrack(i+1, amt) + backtrack(i, amt+coins[i])
+		return dp[i][amt]
+	}
+	return backtrack(0, 0)
+}
+
 // bottom up
 func changev36(amount int, coins []int) int {
 	dp := make([]int, amount+1)
