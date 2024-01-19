@@ -31,6 +31,24 @@ Constraints:
 -104 <= nums[i] <= 104
 */
 
+func LengthOfLISv33(nums []int) int {
+	dp := make([]int, len(nums))
+	dp[0] = 1
+	result := 1
+
+	for i := 1; i < len(nums); i++ {
+		dp[i] = 1
+		for j := 0; j < i; j++ {
+			if nums[i] > nums[j] {
+				dp[i] = max(dp[i], 1+dp[j])
+			}
+		}
+		result = max(result, dp[i])
+	}
+
+	return result
+}
+
 func LengthOfLISv32(nums []int) int {
 	dp := make([]int, len(nums))
 	dp[0] = 1
