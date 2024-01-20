@@ -5,6 +5,7 @@ import "testing"
 func TestNumDecodings(t *testing.T) {
 
 	testFuncs := []func(s string) int{
+		numDecodingsv43,
 		numDecodingsv42,
 		numDecodingsv41,
 		numDecodingsv40,
