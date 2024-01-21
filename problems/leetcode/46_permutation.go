@@ -31,6 +31,25 @@ All the integers of nums are unique.
 HINT: pop itself and make permutation on another elements
 */
 
+func permutev44(nums []int) [][]int {
+	if len(nums) == 1 {
+		return [][]int{{nums[0]}}
+	}
+
+	result := make([][]int, 0)
+	for n := len(nums); n > 0; n-- {
+		v := nums[0]
+		nums = nums[1:]
+		perms := permutev44(nums)
+		for i := range perms {
+			perms[i] = append(perms[i], v)
+		}
+		nums = append(nums, v)
+		result = append(result, perms...)
+	}
+	return result
+}
+
 func permutev43(nums []int) [][]int {
 	if len(nums) == 1 {
 		return [][]int{{nums[0]}}

@@ -28,6 +28,25 @@ Output: [[],[0]]
 HINT: each element has 2 choices, 1 for picked up and 2 do nothing
 */
 
+func subsetsv51(nums []int) [][]int {
+	result := make([][]int, 0)
+	var backtrace func(i int, curr []int)
+	backtrace = func(i int, curr []int) {
+		if i == len(nums) {
+			cp := make([]int, len(curr))
+			copy(cp, curr)
+			result = append(result, cp)
+			return
+		}
+
+		backtrace(i+1, curr)
+		curr = append(curr, nums[i])
+		backtrace(i+1, curr)
+	}
+	backtrace(0, []int{})
+	return result
+}
+
 func subsetsv50(nums []int) [][]int {
 	result := make([][]int, 0)
 	var dfs func(i int, curr []int)
