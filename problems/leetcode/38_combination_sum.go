@@ -41,6 +41,29 @@ All elements of candidates are distinct.
 HINT: we should avoid the duplicated premutation
 */
 
+func combinationSumv53(candicates []int, target int) [][]int {
+	result := make([][]int, 0)
+	var backtrace func(i, sum int, curr []int)
+	backtrace = func(i, sum int, curr []int) {
+		if i == len(candicates) || sum > target {
+			return
+		}
+
+		if sum == target {
+			cp := make([]int, len(curr))
+			copy(cp, curr)
+			result = append(result, cp)
+			return
+		}
+
+		backtrace(i+1, sum, curr)
+		curr = append(curr, candicates[i])
+		backtrace(i, sum+candicates[i], curr)
+	}
+	backtrace(0, 0, []int{})
+	return result
+}
+
 func combinationSumv52(candicates []int, target int) [][]int {
 	result := make([][]int, 0)
 	var backtrace func(i, sum int, curr []int)

@@ -5,6 +5,7 @@ import "testing"
 func TestMinPathSum(t *testing.T) {
 
 	testFuncs := []func(grid [][]int) int{
+		minPathSumv23,
 		minPathSumv22,
 		minPathSumv21,
 		minPathSumv20,

@@ -5,6 +5,7 @@ import "testing"
 func TestLongestCommonSubsequence(t *testing.T) {
 
 	testFuncs := []func(string, string) int{
+		longestCommonSubsequencev42,
 		longestCommonSubsequencev41,
 		longestCommonSubsequencev40,
 		longestCommonSubsequencev39,

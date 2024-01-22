@@ -4,6 +4,7 @@ import "testing"
 
 func TestFindTargetSumWays(t *testing.T) {
 	testFuncs := []func(nums []int, target int) int{
+		findTargetSumWaysv29,
 		findTargetSumWaysv28,
 		findTargetSumWaysv27,
 		findTargetSumWaysv26,
