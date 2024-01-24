@@ -27,6 +27,25 @@ Input: dungeon = [[0]]
 Output: 1
 */
 
+func calculateMinimumHPv39(dungeon [][]int) int {
+	m, n := len(dungeon), len(dungeon[0])
+	for i := m - 1; i >= 0; i-- {
+		for j := n - 1; j >= 0; j-- {
+			if i == m-1 && j == n-1 {
+				dungeon[i][j] = max(1, 1-dungeon[i][j])
+			} else if i == m-1 {
+				dungeon[i][j] = max(1, dungeon[i][j+1]-dungeon[i][j])
+			} else if j == n-1 {
+				dungeon[i][j] = max(1, dungeon[i+1][j]-dungeon[i][j])
+			} else {
+				dungeon[i][j] = max(1, min(dungeon[i][j+1]-dungeon[i][j], dungeon[i+1][j]-dungeon[i][j]))
+			}
+		}
+	}
+
+	return dungeon[0][0]
+}
+
 func calculateMinimumHPv38(dungeon [][]int) int {
 	m, n := len(dungeon), len(dungeon[0])
 

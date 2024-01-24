@@ -5,6 +5,8 @@ import "testing"
 func TestLengthOfLIS(t *testing.T) {
 
 	testfuncs := []func([]int) int{
+		LengthOfLISv38,
+		LengthOfLISv37,
 		LengthOfLISv36,
 		LengthOfLISv35,
 		LengthOfLISv34,

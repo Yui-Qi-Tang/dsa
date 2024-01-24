@@ -5,6 +5,7 @@ import "testing"
 func TestCoinChangeIIWithDPTopDown(t *testing.T) {
 	t.Log("start testing the dp top down...")
 	testFuncs := []func(amount int, coins []int) int{
+		changev52,
 		changev49,
 		changev47,
 		changev45,
@@ -88,6 +89,7 @@ func TestCoinChangeIIWithBottomUp(t *testing.T) {
 	t.Log("start testing the dp bottom up...")
 
 	testFuncs := []func(amount int, coins []int) int{
+		changev51,
 		changev50,
 		changev48,
 		changev46,
