@@ -8,6 +8,7 @@ import (
 func TestTwoSum(t *testing.T) {
 
 	testFunc := []func(nums []int, target int) []int{
+		TwoSumv49,
 		TwoSumv48,
 		TwoSumv47,
 		TwoSumv46,
