@@ -5,6 +5,7 @@ import "testing"
 func TestMinCostClimbingStairs(t *testing.T) {
 
 	testFuncs := []func([]int) int{
+		minCostClimbingStairsv40,
 		minCostClimbingStairsv39,
 		minCostClimbingStairsv38,
 		minCostClimbingStairsv37,

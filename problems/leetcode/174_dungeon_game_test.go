@@ -5,6 +5,7 @@ import "testing"
 func TestCalculateMinimumHP(t *testing.T) {
 
 	testFuncs := []func([][]int) int{
+		calculateMinimumHPv50,
 		calculateMinimumHPv49,
 		calculateMinimumHPv48,
 		calculateMinimumHPv47,
