@@ -28,6 +28,28 @@ Constraints:
 s consists of lowercase English letters.
 */
 
+func countSubstringsv38(s string) int {
+	result := 0
+
+	for i := range s {
+		l, r := i, i
+		for l >= 0 && r < len(s) && s[l] == s[r] {
+			l--
+			r++
+			result++
+		}
+
+		l, r = i, i+1
+		for l >= 0 && r < len(s) && s[l] == s[r] {
+			l--
+			r++
+			result++
+		}
+	}
+
+	return result
+}
+
 func countSubstringsv37(s string) int {
 	result := 0
 
