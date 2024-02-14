@@ -37,6 +37,28 @@ Constraints:
 -1000 <= target <= 1000
 */
 
+func findTargetSumWaysv43(nums []int, target int) int {
+	dp := make(map[int]map[int]int)
+	var backtrack func(i, sum int) int
+	backtrack = func(i, sum int) int {
+		if i == len(nums) {
+			if sum == target {
+				return 1
+			}
+			return 0
+		}
+
+		if ans, exist := dp[i][sum]; exist {
+			return ans
+		}
+
+		dp[i] = make(map[int]int)
+		dp[i][sum] = backtrack(i+1, sum-nums[i]) + backtrack(i+1, sum+nums[i])
+		return dp[i][sum]
+	}
+	return backtrack(0, 0)
+}
+
 func findTargetSumWaysv42(nums []int, target int) int {
 	dp := make(map[int]map[int]int)
 	var backtrack func(i, sum int) int
