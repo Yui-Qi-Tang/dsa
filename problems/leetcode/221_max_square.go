@@ -32,6 +32,24 @@ n == matrix[i].length
 matrix[i][j] is '0' or '1'.
 */
 
+func maximalSquarev50(matrix [][]byte) int {
+	m, n := len(matrix), len(matrix[0])
+	dp := make([][]int, m+1)
+	for i := range dp {
+		dp[i] = make([]int, n+1)
+	}
+	result := 0
+	for i := 1; i <= m; i++ {
+		for j := 1; j <= n; j++ {
+			if matrix[i-1][j-1] == '1' {
+				dp[i][j] = 1 + min(dp[i-1][j-1], min(dp[i][j-1], dp[i-1][j]))
+				result = max(result, dp[i][j])
+			}
+		}
+	}
+	return result * result
+}
+
 func maximalSquarev49(matrix [][]byte) int {
 	m, n := len(matrix), len(matrix[0])
 	dp := make([][]int, m+1)

@@ -5,6 +5,7 @@ import "testing"
 func TestRobII(t *testing.T) {
 
 	testFuncs := []func([]int) int{
+		houseRobberIIv41,
 		houseRobberIIv40,
 		houseRobberIIv39,
 		houseRobberIIv38,
