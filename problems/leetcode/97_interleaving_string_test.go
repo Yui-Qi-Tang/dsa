@@ -5,6 +5,8 @@ import "testing"
 func TestIsInterleave(t *testing.T) {
 
 	testfuncs := []func(s1 string, s2 string, s3 string) bool{
+		isInterleavev3,
+		isInterleavev2,
 		isInterleavev1,
 	}
 

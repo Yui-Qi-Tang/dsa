@@ -5,6 +5,7 @@ import "testing"
 func TestCoinChangeIIWithDPTopDown(t *testing.T) {
 	t.Log("start testing the dp top down...")
 	testFuncs := []func(amount int, coins []int) int{
+		changev88,
 		changev85,
 		changev83,
 		changev82,
@@ -64,6 +65,8 @@ func TestCoinChangeIIWithDPTopDown(t *testing.T) {
 		want   int
 	}{
 		// edge case, the can't be processed by top down way
+		// 2024/02/19: I got it, because 'make' will custome too much time to finish the processing at the limited time.
+		//             see 'changev88'
 		// {
 		// 	amount: 500,
 		// 	coins:  []int{3, 5, 7, 8, 9, 10, 11},
@@ -107,6 +110,7 @@ func TestCoinChangeIIWithBottomUp(t *testing.T) {
 	t.Log("start testing the dp bottom up...")
 
 	testFuncs := []func(amount int, coins []int) int{
+		changev87,
 		changev86,
 		changev84,
 		changev81,

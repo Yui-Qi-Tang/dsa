@@ -49,6 +49,60 @@ s1, s2, and s3 consist of lowercase English letters.
 Follow up: Could you solve it using only O(s2.length) additional memory space?
 */
 
+func isInterleavev3(s1, s2, s3 string) bool {
+	m, n := len(s1), len(s2)
+	if m+n != len(s3) {
+		return false
+	}
+	dp := make([][]bool, m+1)
+	for i := range dp {
+		dp[i] = make([]bool, n+1)
+	}
+	dp[m][n] = true
+
+	for i := m; i >= 0; i-- {
+		for j := n; j >= 0; j-- {
+			if i < m && s1[i] == s3[i+j] && dp[i+1][j] {
+				dp[i][j] = true
+			}
+
+			if j < n && s2[j] == s3[i+j] && dp[i][j+1] {
+				dp[i][j] = true
+			}
+		}
+	}
+
+	return dp[0][0]
+}
+
+func isInterleavev2(s1, s2, s3 string) bool {
+	if len(s1)+len(s2) != len(s3) {
+		return false
+	}
+	dp := make(map[[2]int]bool)
+	var dfs func(i, j int) bool
+	dfs = func(i, j int) bool {
+		if i == len(s1) && j == len(s2) {
+			return true
+		}
+
+		if ans, exist := dp[[2]int{i, j}]; exist {
+			return ans
+		}
+
+		if i < len(s1) && s1[i] == s3[i+j] && dfs(i+1, j) {
+			return true
+		}
+
+		if j < len(s2) && s2[j] == s3[i+j] && dfs(i, j+1) {
+			return true
+		}
+		dp[[2]int{i, j}] = false
+		return false
+	}
+	return dfs(0, 0)
+}
+
 func isInterleavev1(s1 string, s2 string, s3 string) bool {
 	m, n := len(s1), len(s2)
 	if m+n != len(s3) {
