@@ -40,6 +40,42 @@ All the values of coins are unique.
 0 <= amount <= 5000
 */
 
+func changev90(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+	dp[0] = 1
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+	return dp[amount]
+}
+
+func changev89(amount int, coins []int) int {
+	dp := make(map[[2]int]int)
+	var backtrace func(i, amt int) int
+	backtrace = func(i, amt int) int {
+		if i == len(coins) {
+			if amt == amount {
+				return 1
+			}
+			return 0
+		}
+
+		if amt > amount {
+			return 0
+		}
+
+		if ans, exist := dp[[2]int{i, amt}]; exist {
+			return ans
+		}
+
+		dp[[2]int{i, amt}] = backtrace(i+1, amt) + backtrace(i, amt+coins[i])
+		return dp[[2]int{i, amt}]
+	}
+	return backtrace(0, 0)
+}
+
 func changev88(amount int, coins []int) int {
 	dp := make(map[[2]int]int)
 	var backtrace func(i, amt int) int
