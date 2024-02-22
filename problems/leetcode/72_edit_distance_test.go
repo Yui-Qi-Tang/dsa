@@ -7,6 +7,7 @@ import (
 func TestEditDistance(t *testing.T) {
 
 	testFuncs := []func(string, string) int{
+		editDistancev46,
 		editDistancev45,
 		editDistancev44,
 		editDistancev43,

@@ -49,6 +49,34 @@ s1, s2, and s3 consist of lowercase English letters.
 Follow up: Could you solve it using only O(s2.length) additional memory space?
 */
 
+func isInterleavev6(s1, s2, s3 string) bool {
+	if len(s1)+len(s2) != len(s3) {
+		return false
+	}
+	dp := make(map[[2]int]bool)
+	var dfs func(i, j int) bool
+	dfs = func(i, j int) bool {
+		if i == len(s1) && j == len(s2) {
+			return true
+		}
+
+		if ans, exist := dp[[2]int{i, j}]; exist {
+			return ans
+		}
+
+		if i < len(s1) && s1[i] == s3[i+j] && dfs(i+1, j) {
+			return true
+		}
+
+		if j < len(s2) && s2[j] == s3[i+j] && dfs(i, j+1) {
+			return true
+		}
+		dp[[2]int{i, j}] = false
+		return false
+	}
+	return dfs(0, 0)
+}
+
 func isInterleavev5(s1, s2, s3 string) bool {
 	if len(s1)+len(s2) != len(s3) {
 		return false
