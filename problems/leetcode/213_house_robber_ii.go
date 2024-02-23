@@ -44,6 +44,23 @@ Constraints:
 0 <= nums[i] <= 1000
 */
 
+func houseRobberIIv49(nums []int) int {
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	rob := func(hs []int) int {
+		r1, r2 := 0, 0
+		for _, h := range hs {
+			tmp := max(r1+h, r2)
+			r1 = r2
+			r2 = tmp
+		}
+		return r2
+	}
+	return max(rob(nums[1:]), rob(nums[:len(nums)-1]))
+}
+
 func houseRobberIIv48(nums []int) int {
 	if len(nums) == 1 {
 		return nums[0]
