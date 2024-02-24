@@ -33,6 +33,35 @@ n == matrix[i].length
 0 <= matrix[i][j] <= 231 - 1
 */
 
+func longestIncreasingPathv7(matrix [][]int) int {
+	dp := make(map[[2]int]int)
+	var dfs func(i, j, prev int) int
+	dfs = func(i, j, prev int) int {
+		if i < 0 || i == len(matrix) || j < 0 || j == len(matrix[i]) || matrix[i][j] <= prev {
+			return 0
+		}
+
+		if ans, exist := dp[[2]int{i, j}]; exist {
+			return ans
+		}
+
+		result := 1
+		result = max(result, 1+dfs(i+1, j, matrix[i][j]))
+		result = max(result, 1+dfs(i-1, j, matrix[i][j]))
+		result = max(result, 1+dfs(i, j+1, matrix[i][j]))
+		result = max(result, 1+dfs(i, j-1, matrix[i][j]))
+		return result
+	}
+
+	result := 0
+	for i := range matrix {
+		for j := range matrix[i] {
+			result = max(result, dfs(i, j, -1))
+		}
+	}
+	return result
+}
+
 func longestIncreasingPathv6(matrix [][]int) int {
 	dp := make(map[[2]int]int)
 	var dfs func(i, j, prev int) int
