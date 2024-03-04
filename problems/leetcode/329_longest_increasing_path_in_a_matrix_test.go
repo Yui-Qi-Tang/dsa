@@ -4,6 +4,7 @@ import "testing"
 
 func TestLongestIncreasingPath(t *testing.T) {
 	testfuncs := []func([][]int) int{
+		longestIncreasingPathv12,
 		longestIncreasingPathv11,
 		longestIncreasingPathv10,
 		longestIncreasingPathv9,
